@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Книги Хатуева Абдул-Хамида Арбиевича — Народного писателя Чеченской Республики">
+  <title>Книги — Хатуев Абдул-Хамид Арбиевич</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Extended book cards for full books page */
+    .book-full-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 2.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .book-full-card:last-child { border-bottom: none; }
+    .book-full-card__cover {
+      position: relative;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+    .book-full-card__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(15%) brightness(0.9);
+      transition: filter 0.4s;
+    }
+    .book-full-card:hover .book-full-card__img {
+      filter: grayscale(0%) brightness(1);
+    }
+    .book-full-card__body { display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+    .book-full-card__year {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .book-full-card__title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+    .book-full-card__subtitle {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .book-full-card__desc {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 460px;
+    }
+    .book-full-card__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 640px) {
+      .book-full-card { grid-template-columns: 1fr; }
+      .book-full-card__cover { max-width: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">Хатуев Абдул-Хамид</span>
+        <span class="nav__logo-title">Народный писатель ЧР</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html" class="active">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__drawer">
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="knigi.html">Книги</a></li>
+      <li><a href="stikhi.html">Стихи</a></li>
+      <li><a href="kontakty.html">Контакты</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero" style="padding-top: var(--nav-h);">
+    <div class="page-hero__bg" style="background-image: url('images/edfmin1.jpg');"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="eyebrow">Литературное наследие</div>
+      <h1 class="h2" style="font-size: clamp(2.5rem, 6vw, 5rem);">Книги</h1>
+    </div>
+  </section>
+
+  <!-- ═══ BOOKS LIST ═══ -->
+  <section class="section">
+    <div class="container">
+
+      <p class="lead reveal" style="max-width:620px; margin-bottom:3rem;">
+        Пять книг, в которых запечатлена душа Чечни — стихи на нохчийн матте и на русском языке. Книги с доступным PDF можно скачать бесплатно.
+      </p>
+
+      <!-- Book 1 -->
+      <div class="book-full-card reveal">
+        <div class="book-full-card__cover">
+          <img src="images/photo_2023-06-20_12-5238-55.jpg" alt="Яхалахь Нохчийчоь" class="book-full-card__img" loading="lazy">
+        </div>
+        <div class="book-full-card__body">
+          <div class="book-full-card__year">2007 · Нохчийн мотт</div>
+          <h2 class="book-full-card__title">Яхалахь Нохчийчоь</h2>
+          <div class="book-full-card__subtitle">«Праведная моя Чечня» · «Живи, Чечня!»</div>
+          <p class="book-full-card__desc">
+            Один из главных сборников поэта. Стихи, написанные на чеченском языке, — о Родине, вере, судьбе народа. Книга вышла в 2007 году и стала отражением духовного пути автора.
+          </p>
+          <div class="book-full-card__actions">
+            <a href="files/1.pdf" class="btn btn--gold" target="_blank" download>↓ Скачать PDF</a>
+            <a href="files/1.pdf" class="btn btn--outline" target="_blank">Читать онлайн</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 2 -->
+      <div class="book-full-card reveal">
+        <div class="book-full-card__cover">
+          <img src="images/photo_2023-06-20_12-58-49.jpg" alt="Берийн ирс" class="book-full-card__img" loading="lazy">
+        </div>
+        <div class="book-full-card__body">
+          <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>
+          <h2 class="book-full-card__title">Берийн ирс</h2>
+          <div class="book-full-card__subtitle">«Судьба детей» · «Детское счастье»</div>
+          <p class="book-full-card__desc">
+            Сборник стихов о детях Чечни, их судьбах и надеждах. Автор пишет с теплом и болью — для тех, кто вырастал в тени войны и должен был найти в себе силы жить.
+          </p>
+          <div class="book-full-card__actions">
+            <a href="files/2.pdf" class="btn btn--gold" target="_blank" download>↓ Скачать PDF</a>
+            <a href="files/2.pdf" class="btn btn--outline" target="_blank">Читать онлайн</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 3 -->
+      <div class="book-full-card reveal">
+        <div class="book-full-card__cover">
+          <img src="images/photo_2023-06-20_12-5832-593.jpg" alt="Аьрзунан илли" class="book-full-card__img" loading="lazy">
+        </div>
+        <div class="book-full-card__body">
+          <div class="book-full-card__year">Нохчийн мотт · Поэма</div>
+          <h2 class="book-full-card__title">Аьрзунан илли</h2>
+          <div class="book-full-card__subtitle">«Песнь орла»</div>
+          <p class="book-full-card__desc">
+            Поэма о чести, достоинстве и силе духа горского человека. Образ орла — древний символ свободы и гордости чеченского народа — проходит через всё произведение.
+          </p>
+          <div class="book-full-card__actions">
+            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 4 -->
+      <div class="book-full-card reveal">
+        <div class="book-full-card__cover">
+          <img src="images/-6.jpg" alt="Я веду себя на расстрел" class="book-full-card__img" loading="lazy">
+        </div>
+        <div class="book-full-card__body">
+          <div class="book-full-card__year">2008 · Русский язык</div>
+          <h2 class="book-full-card__title">Я веду себя на расстрел</h2>
+          <div class="book-full-card__subtitle">Стихи на русском языке</div>
+          <p class="book-full-card__desc">
+            Единственный сборник на русском языке. Вышел в 2008 году. Стихи раскрывают внутренний мир поэта: его переживания, судьбу народа, трагедию эпохи — языком, понятным всем.
+          </p>
+          <div class="book-full-card__actions">
+            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 5 -->
+      <div class="book-full-card reveal">
+        <div class="book-full-card__cover">
+          <img src="images/2ace954c-4f71-cd87-3b90-d8db5298a95c.jpg" alt="Бусулба сан Нохчийчоь" class="book-full-card__img" loading="lazy">
+        </div>
+        <div class="book-full-card__body">
+          <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>
+          <h2 class="book-full-card__title">Бусулба сан Нохчийчоь</h2>
+          <div class="book-full-card__subtitle">«Моя мусульманская Чечня»</div>
+          <p class="book-full-card__desc">
+            Сборник, в котором вера и Родина неотделимы. Автор воспевает мусульманскую Чечню с её традициями, кодексом чести «Нохчалла» и вечной духовной силой народа.
+          </p>
+          <div class="book-full-card__actions">
+            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Хатуев <span>Абдул-Хамид</span></div>
+      <ul class="footer__nav">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+      <p class="footer__copy">© 2025 Все права защищены</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

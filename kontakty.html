@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Контакты — Хатуев Абдул-Хамид Арбиевич, Народный писатель Чеченской Республики">
+  <title>Контакты — Хатуев Абдул-Хамид Арбиевич</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .contact-portrait {
+      width: 100%;
+      max-width: 360px;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(30%) contrast(1.05);
+      display: block;
+    }
+    .contacts-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .gold-line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold-dim), transparent);
+      margin: 2.5rem 0;
+    }
+    @media (max-width: 720px) {
+      .contacts-layout { grid-template-columns: 1fr; }
+      .contact-portrait { max-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">Хатуев Абдул-Хамид</span>
+        <span class="nav__logo-title">Народный писатель ЧР</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html" class="active">Контакты</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__drawer">
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="knigi.html">Книги</a></li>
+      <li><a href="stikhi.html">Стихи</a></li>
+      <li><a href="kontakty.html">Контакты</a></li>
+    </ul>
+  </div>
+
+  <!-- ═══ PAGE HERO ═══ -->
+  <section class="page-hero" style="padding-top: var(--nav-h);">
+    <div class="page-hero__bg" style="background-image: url('images/edfmin1.jpg');"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="eyebrow">Связаться с нами</div>
+      <h1 class="h2" style="font-size: clamp(2.5rem, 6vw, 5rem);">Контакты</h1>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACTS ═══ -->
+  <section class="section">
+    <div class="container">
+
+      <div class="contacts-layout">
+
+        <!-- Portrait column -->
+        <div class="reveal">
+          <img
+            src="images/photo_2023-06-20_12-58-521.jpg"
+            alt="Хатуев Абдул-Хамид Арбиевич"
+            class="contact-portrait"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Info column -->
+        <div>
+          <div class="reveal">
+            <div class="eyebrow">Семья и наследие</div>
+            <h2 class="h2" style="font-size: clamp(1.8rem, 3.5vw, 2.5rem);">
+              Хранители<br><em>творческого наследия</em>
+            </h2>
+            <p style="margin-top:1.25rem; color: var(--muted); line-height:1.85; max-width:460px;">
+              Этот сайт посвящён памяти Народного писателя Чеченской Республики Абдул-Хамида Арбиевича Хатуева. По всем вопросам, связанным с произведениями, издательством и архивом, обращайтесь к семье.
+            </p>
+          </div>
+
+          <div class="gold-line reveal"></div>
+
+          <div class="contacts-grid reveal">
+
+            <div class="contact-item">
+              <div class="contact-item__label">Телефон</div>
+              <div class="contact-item__value">
+                <a href="tel:+79375215144">+7 937 521-51-44</a>
+              </div>
+              <div class="contact-item__note">Мансур Хатуев</div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__label">Электронная почта</div>
+              <div class="contact-item__value">
+                <a href="mailto:mansur.khatuev@gmail.com">mansur.khatuev@gmail.com</a>
+              </div>
+              <div class="contact-item__note">Основной email</div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__label">Дополнительно</div>
+              <div class="contact-item__value" style="font-size: 1.1rem;">
+                <a href="mailto:ne.kradi@mail.ru">ne.kradi@mail.ru</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item__label">Союз писателей</div>
+              <div class="contact-item__value" style="font-size: 1.1rem;">
+                Союз писателей ЧР
+              </div>
+              <div class="contact-item__note">Грозный, Чеченская Республика</div>
+            </div>
+
+          </div>
+
+          <div class="gold-line reveal"></div>
+
+          <div class="reveal" style="max-width: 460px;">
+            <div class="eyebrow" style="margin-bottom:1rem;">Скачать книги</div>
+            <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; line-height:1.8;">
+              Два сборника доступны для бесплатного скачивания в формате PDF.
+            </p>
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <a href="files/1.pdf" class="btn btn--gold" download target="_blank">
+                ↓ Яхалахь Нохчийчоь
+              </a>
+              <a href="files/2.pdf" class="btn btn--outline" download target="_blank">
+                ↓ Берийн ирс
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Хатуев <span>Абдул-Хамид</span></div>
+      <ul class="footer__nav">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+      <p class="footer__copy">© 2025 Все права защищены</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
