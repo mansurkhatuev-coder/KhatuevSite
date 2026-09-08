@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
 
@@ -45,25 +45,40 @@
     <div class="page-hero__bg" style="background-image: url('images/edfmin1.jpg'); background-position: 50% 60%;"></div>
     <div class="page-hero__overlay"></div>
     <div class="page-hero__content">
-      <div class="eyebrow">Нохчийн мотт</div>
+      <div class="eyebrow">Нохчийн мотт · Русский</div>
       <h1 class="h2" style="font-size: clamp(2.5rem, 6vw, 5rem);">Стихи</h1>
-      <p class="lead" style="margin-top:0.75rem; opacity:0.7;">Поэзия на чеченском языке</p>
+      <p class="lead" style="margin-top:0.75rem; opacity:0.7;">Выберите стихотворение в оглавлении</p>
     </div>
   </section>
 
   <!-- ═══ POEMS ═══ -->
   <section class="section">
     <div class="container">
+      <div class="poems-layout">
+
+        <aside class="poems-toc reveal" aria-label="Оглавление">
+          <div class="poems-toc__label">Содержание</div>
+          <div class="poems-toc__search">
+            <input type="search" id="poems-search" class="poems-toc__search-input"
+                   placeholder="Найти стих…" autocomplete="off" enterkeyhint="search">
+            <button type="button" class="poems-toc__search-clear" id="poems-search-clear"
+                    aria-label="Очистить" hidden>&times;</button>
+          </div>
+          <p class="poems-toc__empty" id="poems-search-empty" hidden>Ничего не найдено</p>
+          <ul class="poems-toc__list" id="poems-toc"></ul>
+        </aside>
+
+        <div class="poems-main">
 
       <div class="poems-intro reveal">
-        <p style="color: var(--muted); font-style: italic; line-height: 1.9;">
-          Стихотворения Абдул-Хамида Хатуева написаны преимущественно на чеченском языке — нохчийн матте. Они воспевают Родину, веру, горскую честь и несломленный дух народа. Многие из них стали основой народных песен.
+        <p>
+          Стихотворения Абдул-Хамида Хатуева написаны преимущественно на чеченском языке — нохчийн маттахь. Они воспевают Родину, веру, горскую честь и несломленный дух народа. Многие из них стали основой народных песен.
         </p>
       </div>
 
-      <div class="poems-lang-header reveal" style="margin: 3rem 0 1.5rem;">
+      <div class="poems-lang-header reveal" data-toc-group="На чеченском">
         <div class="eyebrow">Нохчийн мотт</div>
-        <h3 style="font-family: var(--ff-display); font-size: 1.8rem; font-weight: 400; color: var(--cream);">На чеченском языке</h3>
+        <h3>На чеченском языке</h3>
       </div>
 
       <!-- ── Poem 1 ── -->
@@ -71,12 +86,12 @@
         <div class="poem-block__header">
           <div class="poem-block__num">I</div>
           <h2 class="poem-block__title">Бусулба сан Нохчийчоь</h2>
-          <div class="poem-block__year">«Моя мусульманская Чечня» · 1997</div>
+          <div class="poem-block__year">«Моя праведная Чечня» · 1997</div>
         </div>
 
         <div class="poem-stanza">
           Вайн лаьмнех кхерсташ ю алу,<br>
-          Вайн ирсан дай ъина доь.<br>
+          Вайн ирсан дайъина доь.<br>
           Ларйойла хьо везчу Дала,<br>
           Бусалба сан Нохчийчоь!
         </div>
@@ -748,9 +763,6 @@
           Хьоьгур ву со хьох.<br>
           1978 шо
         </div>
-        <div class="poem-stanza">
-          Р
-        </div>
       </div>
 
       <!-- ── Poem 16 ── -->
@@ -1078,17 +1090,9 @@
         </div>
       </div>
 
-
-    </div>
-  </section>
-
-  <!-- ═══ RUSSIAN POEMS ═══ -->
-  <section class="section section--alt">
-    <div class="container">
-
-      <div class="poems-lang-header reveal" style="margin-bottom: 1.5rem;">
+      <div class="poems-lang-header reveal" data-toc-group="На русском" id="russian-poems">
         <div class="eyebrow">Русский язык</div>
-        <h3 style="font-family: var(--ff-display); font-size: 1.8rem; font-weight: 400; color: var(--cream);">Сборник «Я веду себя на расстрел» (2008)</h3>
+        <h3>Сборник «Я веду себя на расстрел» (2008)</h3>
         <p class="lead" style="margin-top: 0.5rem;">Единственный сборник на русском языке — стихи о достоинстве, горе и неизбежной ответственности человека перед историей.</p>
       </div>
 
@@ -1178,7 +1182,2271 @@
         </div>
       </div>
 
-    </div>
+      <!-- ── Poem RU-5 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">V</div>
+          <h2 class="poem-block__title">Родина</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1985</div>
+        </div>
+
+        <div class="poem-stanza">
+          В горах ли, в степях ли<br>
+          Под солнцем живущие люди,<br>
+          Друг другу несущие радость<br>
+          Иль боли нечаянной грех,
+        </div>
+        <div class="poem-stanza">
+          Пусть вашей молитвою<br>
+          Слово правдивое будет,<br>
+          Ведь правда всегда и везде<br>
+          Возвышала нас всех.
+        </div>
+        <div class="poem-stanza">
+          Пусть мирное небо<br>
+          Сияет над вашим достатком,<br>
+          Пусть добрые люди вам<br>
+          Добрые вести несут.
+        </div>
+        <div class="poem-stanza">
+          И каждый получит<br>
+          Счастье свое без остатка,<br>
+          И будет удачным<br>
+          Добром вами начатый путь.
+        </div>
+        <div class="poem-stanza">
+          Идя от холодных закатов<br>
+          К грядущим весенним рассветам,<br>
+          Запомните имя и дом свой,<br>
+          И матери смех.
+        </div>
+        <div class="poem-stanza">
+          Ведь выше святыни,<br>
+          Чем родина нету на свете.<br>
+          И только она в час беды<br>
+          Возвышала нас всех.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-6 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">VI</div>
+          <h2 class="poem-block__title">Не хочу улететь</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2002</div>
+        </div>
+
+        <div class="poem-stanza">
+          Милане<br>
+          Не хочу я быть выше<br>
+          Небеса оживляющей птицы,<br>
+          Не хочу быть я краше
+        </div>
+        <div class="poem-stanza">
+          Языков золотого огня.<br>
+          Мне всю жизнь по ночам<br>
+          Светлой памятью снится,<br>
+          Добротою зачатая
+        </div>
+        <div class="poem-stanza">
+          Горских башен земля.<br>
+          Не зови, не хочу улететь<br>
+          Я в заморские дали,<br>
+          Ни на север, ни юг
+        </div>
+        <div class="poem-stanza">
+          Я искать доброты не пойду.<br>
+          Эти реки и горы и песни<br>
+          Мне в сердце запали.<br>
+          На вершине земли
+        </div>
+        <div class="poem-stanza">
+          Среди братьев я счастье найду.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-7 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">VII</div>
+          <h2 class="poem-block__title">Уходит горянка</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2005</div>
+        </div>
+
+        <div class="poem-stanza">
+          По трапу уныло шагая,<br>
+          Как будто на свой эшафот,<br>
+          Уходит горянка простая<br>
+          В печальный прощальный полет.
+        </div>
+        <div class="poem-stanza">
+          Пусть люди чужие, далекие,<br>
+          Тебя обогреют теплом,<br>
+          Пусть горы родные, высокие,<br>
+          Любя, вспоминают добром.
+        </div>
+        <div class="poem-stanza">
+          За океаном<br>
+          Ты будешь страдать и грустить,<br>
+          За океаном<br>
+          Придется без родины жить,
+        </div>
+        <div class="poem-stanza">
+          За океаном<br>
+          Ударит в душе летний гром,<br>
+          За океаном<br>
+          Приснится тебе отчий дом.
+        </div>
+        <div class="poem-stanza">
+          Запомни, блуждая в чужбине,<br>
+          И в памяти вечно храни<br>
+          Из детства шальные картины<br>
+          Отвергнутой миром Чечни.
+        </div>
+        <div class="poem-stanza">
+          Твой край, небесами хранимый,<br>
+          Восстанет из пекла огня,<br>
+          Лети же искрой негасимой,<br>
+          Удачи тебе и добра.
+        </div>
+        <div class="poem-stanza">
+          За океаном<br>
+          Ты будешь страдать и грустить,<br>
+          За океаном<br>
+          Придется без родины жить,
+        </div>
+        <div class="poem-stanza">
+          За океаном<br>
+          Ударит в душе летний гром,<br>
+          За океаном<br>
+          Приснится тебе отчий дом.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-8 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">VIII</div>
+          <h2 class="poem-block__title">Самое красивое</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1976</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Принесите самое красивое,<br>
+          То, чего прекрасней в мире нет!<br>
+          Черный ворон полетел за горы<br>
+          Вороненка притащил в ответ.
+        </div>
+        <div class="poem-stanza">
+          Поскакали резвые сайгаки,<br>
+          Сайгачат упрямых привели,<br>
+          С малышами потянулись раки,<br>
+          Бегемоты, зайчики, орлы.
+        </div>
+        <div class="poem-stanza">
+          Горцы, улыбаясь, принесли<br>
+          Золотую горсть родной земли.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-9 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">IX</div>
+          <h2 class="poem-block__title">Светит солнце</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Светит солнце,<br>
+          Тает снег,<br>
+          Будто в мире<br>
+          Горя нет,
+        </div>
+        <div class="poem-stanza">
+          Будто в мире<br>
+          Все равны,<br>
+          Будто в мире<br>
+          Нет войны.
+        </div>
+        <div class="poem-stanza">
+          Светит солнце.<br>
+          Бог Весны.<br>
+          Светит солнце,<br>
+          Меркнет свет.
+        </div>
+        <div class="poem-stanza">
+          Может, в мире<br>
+          Правды нет.<br>
+          Может, вправду,<br>
+          Мы чужие:
+        </div>
+        <div class="poem-stanza">
+          Что в могилах,<br>
+          Что живые…<br>
+          Светит солнца<br>
+          Красный диск –
+        </div>
+        <div class="poem-stanza">
+          Боли нашей<br>
+          Обелиск!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-10 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">X</div>
+          <h2 class="poem-block__title">Смотрит месяц в тиши</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Смотрит месяц в тиши<br>
+          И глаза с ожиданьем глядят,<br>
+          Стук вагонных колес<br>
+          Рвет оковы забытых дорог,
+        </div>
+        <div class="poem-stanza">
+          Я б уехал давно,<br>
+          Но боюсь не вернуться назад,<br>
+          Что не пустят меня<br>
+          За отцовский забытый порог.
+        </div>
+        <div class="poem-stanza">
+          Все сжимает уста<br>
+          Тоски молчаливая память,<br>
+          Тают дымкой во мгле<br>
+          Очертанья покинутых гор,
+        </div>
+        <div class="poem-stanza">
+          И полощет в груди,<br>
+          ни пред кем не склоненное знамя,<br>
+          Соль коварной слезы<br>
+          Пеленой застилает мне взор.
+        </div>
+        <div class="poem-stanza">
+          Кровь ручьями течет,<br>
+          Заливая цветы поля брани…<br>
+          Край отцовских вершин,<br>
+          Свет огня твоего негасим.
+        </div>
+        <div class="poem-stanza">
+          Я целую твои<br>
+          Огнем опаленные раны,<br>
+          И о чести молю,<br>
+          Зваться сыном достойным твоим.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-11 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XI</div>
+          <h2 class="poem-block__title">Я люблю степные дали</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2000</div>
+        </div>
+
+        <div class="poem-stanza">
+          Аминат Хасиевой<br>
+          Я люблю степные дали –<br>
+          Сердце рвется на простор.<br>
+          Но поля у ног упали
+        </div>
+        <div class="poem-stanza">
+          Пред красою снежных гор.<br>
+          Мне твоя улыбка снится,<br>
+          Мир тускнеет, словно тень,<br>
+          Поднимаясь к солнцу птицей,
+        </div>
+        <div class="poem-stanza">
+          Я встречаю каждый день.<br>
+          Вновь из тьмы к тебе лечу я,<br>
+          Словно к свету мотылек,<br>
+          Чтоб сгореть огня не чуя,
+        </div>
+        <div class="poem-stanza">
+          И упасть у стройных ног.<br>
+          Пролетят года над нами<br>
+          С нашей вечной суетой.<br>
+          Я, как степь, перед горами,
+        </div>
+        <div class="poem-stanza">
+          Преклоняюсь пред тобой!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-12 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XII</div>
+          <h2 class="poem-block__title">Одиночество</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          Аул обнимает<br>
+          беззлобная мгла,<br>
+          В соцветиях звезд<br>
+          улыбнулась луна.
+        </div>
+        <div class="poem-stanza">
+          И вдруг одиноко<br>
+          за дальней горой<br>
+          Послышался волчий<br>
+          тоскующий вой.
+        </div>
+        <div class="poem-stanza">
+          Так плачет лишь стаей<br>
+          затравленный волк,<br>
+          Который устал и<br>
+          в пути занемог…
+        </div>
+        <div class="poem-stanza">
+          А голос над миром<br>
+          сильней и страшней:<br>
+          Так плачут, лишь только<br>
+          тер друзей!
+        </div>
+        <div class="poem-stanza">
+          И я, словно волк,<br>
+          завываю порой<br>
+          И вновь проклинаю<br>
+          желанный покой,
+        </div>
+        <div class="poem-stanza">
+          Когда на один остаюсь<br>
+          я с тоской,<br>
+          Покинутый всеми,<br>
+          забытый тобой!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-13 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XIII</div>
+          <h2 class="poem-block__title">Будь готов</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          Абу Уциеву<br>
+          Будь готов<br>
+          И к славе,<br>
+          И к бесславью.
+        </div>
+        <div class="poem-stanza">
+          Жизнь прожить –<br>
+          Не поле перейти.<br>
+          Сны отбрось,<br>
+          Не дышащие явью,
+        </div>
+        <div class="poem-stanza">
+          Вероломство встретив,<br>
+          Не тужи.<br>
+          Друг, мужайся,<br>
+          Коли в щели сакли
+        </div>
+        <div class="poem-stanza">
+          Клевета<br>
+          Змеею заползет.<br>
+          Раны нам наносит<br>
+          Только враг ли,
+        </div>
+        <div class="poem-stanza">
+          Только друг ли<br>
+          Нам хвалу поет?<br>
+          Не ищи пиров<br>
+          Больших, обильных
+        </div>
+        <div class="poem-stanza">
+          И друзей,<br>
+          Чья доблесть – услужить.<br>
+          Лучше враждовать<br>
+          С мужчиной сильным,
+        </div>
+        <div class="poem-stanza">
+          Чем с трусливым горцем<br>
+          Дружным быть!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-14 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XIV</div>
+          <h2 class="poem-block__title">Посмотри</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2002</div>
+        </div>
+
+        <div class="poem-stanza">
+          Видишь, брат мой,<br>
+          Посмотри<br>
+          На волшебный<br>
+          Цвет зари.
+        </div>
+        <div class="poem-stanza">
+          Не всегда<br>
+          Заря пленяет –<br>
+          Посмотри.<br>
+          Тает пламя.
+        </div>
+        <div class="poem-stanza">
+          Посмотри.<br>
+          Как красив<br>
+          Язык любви!<br>
+          Не всегда
+        </div>
+        <div class="poem-stanza">
+          Огонь так ласков –<br>
+          Посмотри.<br>
+          Снег ложится,<br>
+          Посмотри.
+        </div>
+        <div class="poem-stanza">
+          Как здесь тихо!<br>
+          Посмотри!<br>
+          Не всегда<br>
+          В душе, столь тихо –
+        </div>
+        <div class="poem-stanza">
+          Посмотри!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-15 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XV</div>
+          <h2 class="poem-block__title">Все пропадет</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Все пропадет в Ночи,<br>
+          Что сигаретный дым.<br>
+          Жалко ли жизнь влачи,<br>
+          Будь ли большим святым –
+        </div>
+        <div class="poem-stanza">
+          Все пропадает в Ночи!<br>
+          Все пропадет не зря,<br>
+          Ясность приходит вдруг:<br>
+          Руку забыть нельзя,
+        </div>
+        <div class="poem-stanza">
+          Другу что подал друг.<br>
+          Все пропадет не зря!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-16 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XVI</div>
+          <h2 class="poem-block__title">Глаза детей</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Когда вы задыхаетесь<br>
+          от боли и обиды<br>
+          И молите у бога<br>
+          сто смертей,
+        </div>
+        <div class="poem-stanza">
+          Прошу вас в мире отыщите,<br>
+          люди, глаза детей.<br>
+          Пусть правды нет на целом<br>
+          белом свете,
+        </div>
+        <div class="poem-stanza">
+          Она всегда в глазах<br>
+          ребячьих светит.<br>
+          Когда вам улыбается<br>
+          желанная удача,
+        </div>
+        <div class="poem-stanza">
+          Лишь стоит проявить<br>
+          и преданность, и лесть.<br>
+          Но бить челом –<br>
+          такая незадача,
+        </div>
+        <div class="poem-stanza">
+          Когда в тебе мужская<br>
+          гордость есть.<br>
+          Но прежде, чем<br>
+          склониться, посмотри,
+        </div>
+        <div class="poem-stanza">
+          Как в детском взоре<br>
+          чести свет горит.<br>
+          Когда слепы<br>
+          от ярости и злобы,
+        </div>
+        <div class="poem-stanza">
+          Вселилось в вас<br>
+          сто тысяча чертей,<br>
+          Вы руку мести<br>
+          опустите, чтобы
+        </div>
+        <div class="poem-stanza">
+          Хотя б на миг<br>
+          взглянуть в глаза детей.<br>
+          И многое поймете<br>
+          вы тогда:
+        </div>
+        <div class="poem-stanza">
+          В глазах детей<br>
+          святая доброта!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-17 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XVII</div>
+          <h2 class="poem-block__title">Раб</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1981</div>
+        </div>
+
+        <div class="poem-stanza">
+          Долго слыша к себе<br>
+          Уважительный тон,<br>
+          Рядового меня ты<br>
+          Презрел, словно тварь.
+        </div>
+        <div class="poem-stanza">
+          И читал я в глазах,<br>
+          Что закованы льдом:<br>
+          – Я твой царь, я твой царь!<br>
+          И тогда возмущенно
+        </div>
+        <div class="poem-stanza">
+          Я закричал,<br>
+          Что ты хуже гулящих,<br>
+          Лукавящих баб.<br>
+          Вновь в собачьих глазах
+        </div>
+        <div class="poem-stanza">
+          Твоих я прочитал:<br>
+          – Ты хаким, а я вечно<br>
+          Твой преданный раб!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-18 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XVIII</div>
+          <h2 class="poem-block__title">Друзья</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2004</div>
+        </div>
+
+        <div class="poem-stanza">
+          Все кончается когда-то<br>
+          Сколько в вечность не стучись.<br>
+          Главное – прожить, ребята,<br>
+          Нам достойно эту жизнь!
+        </div>
+        <div class="poem-stanza">
+          Чтоб сквозь время пробиваясь,<br>
+          Продирая сердце в кровь,<br>
+          Нас, подобно вратам рая,<br>
+          Грела братская любовь.
+        </div>
+        <div class="poem-stanza">
+          Чтоб от власти лжепророков<br>
+          Заслоняла сердцем мать,<br>
+          И к отцовскому порогу<br>
+          Не гнушалось сердце звать.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-19 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XIX</div>
+          <h2 class="poem-block__title">В трудную минуту</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Элите Исраиловой<br>
+          Если в трудную минуту,<br>
+          Пусто и темно вокруг,<br>
+          Значит, друга черт попутал,
+        </div>
+        <div class="poem-stanza">
+          Значит, предал тебя друг.<br>
+          Доверяй друзьям надежным,<br>
+          Что ведут тебя из тьмы.<br>
+          А не дутым клятвам ложным,
+        </div>
+        <div class="poem-stanza">
+          Чтоб не плакать в час беды!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-20 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XX</div>
+          <h2 class="poem-block__title">Если дружба – вода</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1978</div>
+        </div>
+
+        <div class="poem-stanza">
+          Если дружба – вода,<br>
+          То с детства я мучаюсь жаждою,<br>
+          Коль любовь – это хлеб,<br>
+          То я вечно голодным хожу.
+        </div>
+        <div class="poem-stanza">
+          Я безумно влюблен<br>
+          В мире в женщину каждую,<br>
+          В незнакомых глазах<br>
+          Закадычных друзей узнаю.
+        </div>
+        <div class="poem-stanza">
+          Коль вино – доброта,<br>
+          Мне бокалы полней наливайте,<br>
+          Коль веселье – огонь,<br>
+          В каждой сакле зажгите огни.
+        </div>
+        <div class="poem-stanza">
+          Добротою друзей и гостей<br>
+          Поскорей угощайте.<br>
+          Породнят нас теплом<br>
+          Бескорыстных друзей очаги.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-21 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXI</div>
+          <h2 class="poem-block__title">Рука</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1976</div>
+        </div>
+
+        <div class="poem-stanza">
+          Если кто-то вам протянет руку,<br>
+          В час беды улыбкой озарит,<br>
+          Не спешите, называя другом,<br>
+          Незнакомцу сердце подарить.<br>
+          Может, он хотел, обняв вас туже,<br>
+          Хитростью своею задушить?<br>
+          Как легко же мы со всеми дружим,<br>
+          Как нельзя со всеми дружным быть.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-22 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXII</div>
+          <h2 class="poem-block__title">Пусть тебе покрепче спится</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          Сайпуди Натаеву<br>
+          Если ты туманной ночью,<br>
+          Пьяным в гости не стучался,<br>
+          Правды горькой побоявшись,
+        </div>
+        <div class="poem-stanza">
+          Клятвой ложною не клялся,<br>
+          Если груз своих ошибок<br>
+          На безвинного не клал,<br>
+          Горский хлеб, что пахнет потом,
+        </div>
+        <div class="poem-stanza">
+          У сирот не отнимал,<br>
+          Если даже в трудный день свой<br>
+          Ты друзей не предавал<br>
+          И пред всяким властолюбцем
+        </div>
+        <div class="poem-stanza">
+          Гордо голову держал,<br>
+          Если с женщиной на рынке<br>
+          В спор позорный не вступал,<br>
+          А тем боле, даже битый,
+        </div>
+        <div class="poem-stanza">
+          С нею счеты не равнял,<br>
+          Если гостя с злой обидой<br>
+          От себя не провожал,<br>
+          И на свете выше солнца
+        </div>
+        <div class="poem-stanza">
+          Край свой отчий признавал:<br>
+          Пусть тебе покрепче спится,<br>
+          Остальное все простится!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-23 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXIII</div>
+          <h2 class="poem-block__title">Если хочешь быть счастливой</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1994</div>
+        </div>
+
+        <div class="poem-stanza">
+          Саците Туруевой<br>
+          Если хочешь быть счастливой,<br>
+          Никого не предавай,<br>
+          Будь спокойной, молчаливой,
+        </div>
+        <div class="poem-stanza">
+          И на зло не отвечай.<br>
+          Не кляни своих, чужих,<br>
+          Даже тех, кто вечно лает.<br>
+          Сторонись друзей плохих –
+        </div>
+        <div class="poem-stanza">
+          Хуже зверя не бывает!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-24 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXIV</div>
+          <h2 class="poem-block__title">Клад</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Айнди Хусаинову<br>
+          Человеку снится клад,<br>
+          А другому – дача.<br>
+          Этот даже трёшке рад,
+        </div>
+        <div class="poem-stanza">
+          Тот же – передаче.<br>
+          Человеку снится бал,<br>
+          Жгучая принцесса…<br>
+          Тот во сне министром стал,
+        </div>
+        <div class="poem-stanza">
+          Чуть не пал от стресса!<br>
+          Человеку снится смех,<br>
+          Детство ему снится.<br>
+          Значит, он богаче всех,
+        </div>
+        <div class="poem-stanza">
+          Волен он, как птица!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-25 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXV</div>
+          <h2 class="poem-block__title">Коль друзья предадут</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2000</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Коль друзья предадут,<br>
+          Не боюсь.<br>
+          С врагами и так я<br>
+          Борюсь!<br>
+          На равнодушных<br>
+          Мне наплевать!<br>
+          – Как знать, как знать…
+        </div>
+      </div>
+
+      <!-- ── Poem RU-26 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXVI</div>
+          <h2 class="poem-block__title">Все растаем в небесах</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Ученые утверждают, что из<br>
+          всего живого ядерную зиму<br>
+          переживет таракан<br>
+          Кто твердит, что ядерную зиму
+        </div>
+        <div class="poem-stanza">
+          Выдержит, поддался на обман.<br>
+          Все растаем в небесах незримо:<br>
+          Будет жить один лишь таракан.<br>
+          Все ж подвергнем истину сомненью,
+        </div>
+        <div class="poem-stanza">
+          Коль грядет столь роковой конец.<br>
+          Правде чернокнижной я не верю:<br>
+          Всех переживает лишь подлец.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-27 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXVII</div>
+          <h2 class="poem-block__title">Мавр свое дело сделал</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1995</div>
+        </div>
+
+        <div class="poem-stanza">
+          Мавр свое дело сделал…<br>
+          Он может спокойно уйти,<br>
+          Чтобы спасти свое тело.<br>
+          Но душу ему не спасти.
+        </div>
+        <div class="poem-stanza">
+          Она, словно ворон черный,<br>
+          Что кличет несчастья и мор,<br>
+          В проклятьях людей сожженных<br>
+          Услышит себе приговор.
+        </div>
+        <div class="poem-stanza">
+          Она, словно призрак горя,<br>
+          Достойна над пеплом витать,<br>
+          Чтобы от моря до моря<br>
+          Проклятья живых собирать!
+        </div>
+        <div class="poem-stanza">
+          Мавр свое дело сделал…
+        </div>
+      </div>
+
+      <!-- ── Poem RU-28 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXVIII</div>
+          <h2 class="poem-block__title">Никчемны струны</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1975</div>
+        </div>
+
+        <div class="poem-stanza">
+          о любви не певшие<br>
+          Никчемны струны<br>
+          о любви не певшие,<br>
+          И очаги, добром
+        </div>
+        <div class="poem-stanza">
+          тебя не гревшие,<br>
+          И о добре<br>
+          высокие слова,<br>
+          Коль о тебе плоха
+        </div>
+        <div class="poem-stanza">
+          в краю молва.<br>
+          Никчемны лозы, что<br>
+          не плодоносят,<br>
+          И песня, что
+        </div>
+        <div class="poem-stanza">
+          влюбленных не зовет,<br>
+          И гордость глупая,<br>
+          что хоть на горизонте,<br>
+          К земле спуститься
+        </div>
+        <div class="poem-stanza">
+          небу не дает.<br>
+          Никчемны зерна,<br>
+          пусть и золотые,<br>
+          Которые весной
+        </div>
+        <div class="poem-stanza">
+          не прорастут.<br>
+          Никчемны дали<br>
+          вечно голубые,<br>
+          Что путников
+        </div>
+        <div class="poem-stanza">
+          в дорогу не зовут.<br>
+          Никчемна память,<br>
+          что забудет тропы,<br>
+          Ведущие
+        </div>
+        <div class="poem-stanza">
+          к могильникам отцов,<br>
+          И, не считаясь с рангом,<br>
+          кто ты, что ты,<br>
+          Никчемна слава
+        </div>
+        <div class="poem-stanza">
+          без родных дымов.<br>
+          Никчемна дружба,<br>
+          знавшая измену<br>
+          И дружба,
+        </div>
+        <div class="poem-stanza">
+          не встречавшая обид.<br>
+          Никчемно все,<br>
+          что жизнью лишь зовется,<br>
+          Коль светлой песней
+        </div>
+        <div class="poem-stanza">
+          в друзьях не отзовется!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-29 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXIX</div>
+          <h2 class="poem-block__title">Человек богат не статью</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2002</div>
+        </div>
+
+        <div class="poem-stanza">
+          Рамзану Абзаилову<br>
+          Нужно соли съесть немало,<br>
+          Испытать немало мук,<br>
+          Чтобы в жизни лучше стало,
+        </div>
+        <div class="poem-stanza">
+          Чтоб любил и верил друг.<br>
+          Человек богат не статью,<br>
+          Красоваться ни к чему.<br>
+          Не ищи друзей по платью,
+        </div>
+        <div class="poem-stanza">
+          Выбирай их по уму.<br>
+          В жизни чуда не бывает,<br>
+          Хоть за чудом в пекло лезь!<br>
+          Если друг с тобой страдает,
+        </div>
+        <div class="poem-stanza">
+          Может, это чудо есть.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-30 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXX</div>
+          <h2 class="poem-block__title">Почему ты сегодня один?</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1989</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Почему ты сегодня один?<br>
+          Такое с тобой не случалось,<br>
+          Как много на пир именин<br>
+          Друзей к тебе градом стучалось!<br>
+          – Эй, люди, сегодня ко мне<br>
+          Грозою беда постучалась!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-31 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXI</div>
+          <h2 class="poem-block__title">Пусть гора высока</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          Пусть гора высока,<br>
+          А правда за ней –<br>
+          Прямодушные горцы,<br>
+          Седлайте коней!
+        </div>
+        <div class="poem-stanza">
+          Если плачет невеста,<br>
+          Пусть не братья вы ей,<br>
+          Сердобольные горцы,<br>
+          Седлайте коней!
+        </div>
+        <div class="poem-stanza">
+          В час беды и веселья<br>
+          За друзьями скорей,<br>
+          Разудалые горцы,<br>
+          Седлайте коней!
+        </div>
+        <div class="poem-stanza">
+          Коли тишь за платаном<br>
+          И поет соловей,<br>
+          Беспокойные горцы,<br>
+          Пожалейте коней!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-32 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXII</div>
+          <h2 class="poem-block__title">Скрыл я от друга обиду свою</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Скрыл я от друга обиду свою:<br>
+          Он не хотел ведь унизить меня.<br>
+          Больше обычного с ним я смеюсь.<br>
+          Доброе сердце, не предай меня!
+        </div>
+        <div class="poem-stanza">
+          Я от любимой, смеясь, ухожу.<br>
+          Все ей прощал я, верность храня,<br>
+          Только измены простить не могу.<br>
+          Гордое сердце, не предай меня!
+        </div>
+        <div class="poem-stanza">
+          Многим дарил я и песни, и хлеб,<br>
+          Боготворили меня друзья.<br>
+          Сам я без хлеба – ухмылка мне вслед.<br>
+          Щедрое сердце, не предай меня!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-33 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXIII</div>
+          <h2 class="poem-block__title">Людская молва</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2002</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Сильнее всего на свете.<br>
+          Быть может, и слов таких нету?<br>
+          – Запомни такие слова:<br>
+          Людская молва.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-34 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXIV</div>
+          <h2 class="poem-block__title">Счастлив ли тот на свете?</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2000</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Счастлив ли тот на свете,<br>
+          У кого врагов нету?<br>
+          – Он всех нас несчастливей:<br>
+          Знать, не было у него и друзей.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-35 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXV</div>
+          <h2 class="poem-block__title">Вновь измена в цене</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1998</div>
+        </div>
+
+        <div class="poem-stanza">
+          Рамзану<br>
+          Ты приходишь,<br>
+          Как день,<br>
+          Ты молчишь,
+        </div>
+        <div class="poem-stanza">
+          Словно память.<br>
+          Одинокая тень.<br>
+          Одинокое знамя.<br>
+          Не зови, не хочу
+        </div>
+        <div class="poem-stanza">
+          Я вернуться назад,<br>
+          Где в аду, словно прах,<br>
+          Наши грезы горят.<br>
+          Слышишь, где-то бомбят,
+        </div>
+        <div class="poem-stanza">
+          Снова капает кровь.<br>
+          И в загоне опять<br>
+          Доброта и любовь.<br>
+          Вновь по скользкой тропе
+        </div>
+        <div class="poem-stanza">
+          В никуда нам брести,<br>
+          Вновь измена в цене<br>
+          И предатель в чести.<br>
+          Кружит ворон глухой,
+        </div>
+        <div class="poem-stanza">
+          Знаменосец упал.<br>
+          Ты погиб, я живой,<br>
+          Я смертельно устал.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-36 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXVI</div>
+          <h2 class="poem-block__title">Тот, кто лжи не боится</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2005</div>
+        </div>
+
+        <div class="poem-stanza">
+          Тот, кто лжи не боится, прав.<br>
+          Но если, сказать иначе,<br>
+          Что он не потеряет прав,<br>
+          Совсем не значит.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-37 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXVII</div>
+          <h2 class="poem-block__title">Умирая, старец горевал</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1976</div>
+        </div>
+
+        <div class="poem-stanza">
+          Умирая, старец горевал,<br>
+          День рожденья свой не признавал,<br>
+          Оттого, что сотню долгих лет<br>
+          Все твердил, любви на свете нет!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-38 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXVIII</div>
+          <h2 class="poem-block__title">По заслугам</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1982</div>
+        </div>
+
+        <div class="poem-stanza">
+          Эта речка, что с шумом<br>
+          Кого-то всю жизнь догоняет,<br>
+          Эти горы, что жаждут<br>
+          До самого солнца дойти,
+        </div>
+        <div class="poem-stanza">
+          Эти травы и камни, и тропка,<br>
+          Что в мир убегает –<br>
+          Знаю все это было<br>
+          До того, как сюда мне прийти.
+        </div>
+        <div class="poem-stanza">
+          Знаю, кто-то с тоской<br>
+          Провожал предзакатные зори,<br>
+          Как улыбку любимой,<br>
+          Предрассветное солнце встречал.
+        </div>
+        <div class="poem-stanza">
+          И от счастья в воздух<br>
+          Чеченцы стреляли, коль горы<br>
+          Первым радостным криком<br>
+          Своим мальчуган оглашал.
+        </div>
+        <div class="poem-stanza">
+          И дорога была,<br>
+          Что и радость, и боль приносила –<br>
+          Ожиданье надежд,<br>
+          Удивленье негаданных встреч.
+        </div>
+        <div class="poem-stanza">
+          И детей на войну провожая,<br>
+          Горянка, в сердцах голосила<br>
+          И, как клёкот звучала над миром,<br>
+          Гортанная горская речь.
+        </div>
+        <div class="poem-stanza">
+          До меня улыбалась<br>
+          Лукаво кому-то Джоконда,<br>
+          И, как нанятый, правду<br>
+          Джордано Бруно защищал.
+        </div>
+        <div class="poem-stanza">
+          И назло палачам, подняв<br>
+          Голову свято и гордо,<br>
+          Зелимхан, хоть и мертвый,<br>
+          Не падал – стоял, и стоял.
+        </div>
+        <div class="poem-stanza">
+          Я пришел в этот мир<br>
+          Продолжением песни и плача.<br>
+          Боль и радость смен, средь<br>
+          Живущих на свете пройдусь.
+        </div>
+        <div class="poem-stanza">
+          Пусть хороших людей<br>
+          На земле не минует удача,<br>
+          Пусть возмездьем плохим<br>
+          Будет горечь и грусть.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-39 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XXXIX</div>
+          <h2 class="poem-block__title">Я не плакал давно</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1995</div>
+        </div>
+
+        <div class="poem-stanza">
+          Я не плакал давно,<br>
+          Улыбаюсь случайно,<br>
+          Стал тяжел, как свинец.<br>
+          Я живу как, в кино:
+        </div>
+        <div class="poem-stanza">
+          Этой ленте печальной<br>
+          Скоро будет конец.<br>
+          В мир иной без печали<br>
+          Ворота растворю –
+        </div>
+        <div class="poem-stanza">
+          Знать пора мне и честь!<br>
+          А врагам, что желали<br>
+          Мне погибель – дарю<br>
+          Эту добрую весть.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-40 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XL</div>
+          <h2 class="poem-block__title">Я пью за тех, кто</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Мусе Мовсарову<br>
+          Я пью за тех,<br>
+          кто падал, но вставал,<br>
+          Кто для друзей
+        </div>
+        <div class="poem-stanza">
+          собою рисковал,<br>
+          Кто в самый трудный день,<br>
+          беря свой перевал,<br>
+          Друзей плохих
+        </div>
+        <div class="poem-stanza">
+          не проклинал!<br>
+          Я пью за тех,<br>
+          кто боль и горечь знал,<br>
+          Кто никому
+        </div>
+        <div class="poem-stanza">
+          об этом не кричал,<br>
+          Кто и в друзьях<br>
+          притворство узнавал,<br>
+          Но до поры
+        </div>
+        <div class="poem-stanza">
+          смеялся и молчал.<br>
+          Я пью за тех,<br>
+          кто горькой правде рад,<br>
+          Кто от чужой
+        </div>
+        <div class="poem-stanza">
+          беды не отворотит взгляд,<br>
+          Кто днем иль ночью,<br>
+          в дождь иль снегопад,<br>
+          Смеясь, за друга
+        </div>
+        <div class="poem-stanza">
+          может выпить яд!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-41 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLI</div>
+          <h2 class="poem-block__title">Я судьбу не виню</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2005</div>
+        </div>
+
+        <div class="poem-stanza">
+          Я судьбу не виню,<br>
+          Знать, таков мой удел.<br>
+          Видно, друга-змею<br>
+          На груди я пригрел.
+        </div>
+        <div class="poem-stanza">
+          Все готов был простить.<br>
+          Все обиды сносил.<br>
+          Только подлость забыть<br>
+          Не хватает мне сил.
+        </div>
+        <div class="poem-stanza">
+          Боль измены сильней,<br>
+          Чем смертельней недуг:<br>
+          И пока я в огне<br>
+          В спину целится друг!
+        </div>
+        <div class="poem-stanza">
+          Он хорошим был малым,<br>
+          Правду с детства любил.<br>
+          В жизни всяко бывало:<br>
+          И тоски, и любви.
+        </div>
+        <div class="poem-stanza">
+          Я судьбу не виню,<br>
+          Знать, таков мой удел.<br>
+          Видно, друга-змею<br>
+          На груди я пригрел.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-42 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLII</div>
+          <h2 class="poem-block__title">Кружит снова воронье</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2004</div>
+        </div>
+
+        <div class="poem-stanza">
+          Кружит снова воронье надо мною,<br>
+          И беду вещает волчий вой,<br>
+          Клевета вползает в дом змеею,<br>
+          Вновь топор навис над головой.
+        </div>
+        <div class="poem-stanza">
+          Снова дождик барабанит в крышу,<br>
+          И ветра усталые шумят.<br>
+          Вдруг я песни матери услышу,<br>
+          Вижу я смеющуюся мать:
+        </div>
+        <div class="poem-stanza">
+          «Улыбнись, сыночек, всем невзгодам,<br>
+          Всем назло, судьбе наперекор.<br>
+          Помни вечно, что ты горец родом,<br>
+          Мать твоя горянка с отчих гор!
+        </div>
+        <div class="poem-stanza">
+          Разгоню ворон твоей печали,<br>
+          Волка грусти попрошу молчать.<br>
+          Были твои деды крепче стали<br>
+          Ты ж огня сильнее должен стать!»
+        </div>
+        <div class="poem-stanza">
+          – Нана, где ты? Я тебя не вижу,<br>
+          Ты не знаешь, как же трудно мне!<br>
+          …Только дождик барабанит в крышу<br>
+          Волки завывают вдалеке.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-43 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLIII</div>
+          <h2 class="poem-block__title">Мой дед</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1976</div>
+        </div>
+
+        <div class="poem-stanza">
+          Мой дед не прослыл богачом,<br>
+          Ходил за сохой,<br>
+          Мастерил он кинжалы.<br>
+          И все, что восславили
+        </div>
+        <div class="poem-stanza">
+          Горы кругом,<br>
+          Он сделал своими руками.<br>
+          Но тихо и бедно,<br>
+          Влача свою жизнь,
+        </div>
+        <div class="poem-stanza">
+          Сберег он в наследство<br>
+          Сокровища эти:<br>
+          Любить мне, как воину,<br>
+          Он завещал
+        </div>
+        <div class="poem-stanza">
+          Свободу и правду<br>
+          Отеческих скал,<br>
+          И вновь обращаясь<br>
+          Ко мне, как к мужчине:
+        </div>
+        <div class="poem-stanza">
+          – Пусть женщина будет<br>
+          Твоей святыней.<br>
+          Для горца, – сказал он, –<br>
+          Убийственна лесть.
+        </div>
+        <div class="poem-stanza">
+          Пусть не чернит она,<br>
+          Горскую честь.<br>
+          С тех пор мне Отчизна –<br>
+          Моя дорога.
+        </div>
+        <div class="poem-stanza">
+          С тех пор преклоняюсь<br>
+          Пред женщиной каждой.<br>
+          С тех пор я в огне<br>
+          И борьба нелегка:
+        </div>
+        <div class="poem-stanza">
+          Я честь сохранить<br>
+          Незапятнанной жажду.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-44 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLIV</div>
+          <h2 class="poem-block__title">Ни пред кем мы не склонялись</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1985</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Ни пред кем мы не склонялись,<br>
+          В ад огня, смеясь, бросались,<br>
+          Нам ли головы склонять?<br>
+          – Надо, коли просит мать.
+        </div>
+        <div class="poem-stanza">
+          – Женщин стройных и красивых,<br>
+          Пусть замужних, пусть и лживых<br>
+          Нам ли бросить целовать?<br>
+          – Надо, коли просит мать.
+        </div>
+        <div class="poem-stanza">
+          – Сок, что стройными ногами<br>
+          Девушки давили сами.<br>
+          Нам ли бросить выпивать?<br>
+          – Надо, коли просит мать.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-45 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLV</div>
+          <h2 class="poem-block__title">Пока дышу, надеюсь…</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Мне трудно, нана,<br>
+          горько, нана, мне<br>
+          Я вновь<br>
+          собою не владею…
+        </div>
+        <div class="poem-stanza">
+          Ушла любовь.<br>
+          Но слышу в тишине:<br>
+          Пока дышу, надеюсь …<br>
+          И друг мой, нана,
+        </div>
+        <div class="poem-stanza">
+          кем гордилась ты,<br>
+          Не смог простить<br>
+          мне мелкую затею.<br>
+          Я вновь один,
+        </div>
+        <div class="poem-stanza">
+          прости меня, прости..<br>
+          Пока дышу, надеюсь …<br>
+          Разжег очаг,<br>
+          но в сакле, как могиле
+        </div>
+        <div class="poem-stanza">
+          И без друзей<br>
+          никак я не согреюсь.<br>
+          Я вновь шепчу,<br>
+          как в детстве ты учила:
+        </div>
+        <div class="poem-stanza">
+          Пока дышу, надеюсь….<br>
+          Пока дышу,<br>
+          клянусь вперед шагать<br>
+          Сквозь жизни шквал,
+        </div>
+        <div class="poem-stanza">
+          я ран не защищу.<br>
+          Смеяться, плакать,<br>
+          верить, презирать –<br>
+          Клянусь собой, пока дышу…
+        </div>
+        <div class="poem-stanza">
+          Пока дышу,<br>
+          клянусь с улыбкой жить<br>
+          И жизнь любить,<br>
+          как все о чем пишу.
+        </div>
+        <div class="poem-stanza">
+          Клянусь не клясться,<br>
+          счастье заслужить:<br>
+          Ведь счастлив я, пока дышу.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-46 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLVI</div>
+          <h2 class="poem-block__title">Ребенок прилип на прицеле</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1995</div>
+        </div>
+
+        <div class="poem-stanza">
+          Ребенок прилип на прицеле,<br>
+          Что бедный солдатик вспотел.<br>
+          Как будто планету целую<br>
+          Он взял под свой прицел.<br>
+          Малыш улыбается весело,<br>
+          На пулю ему наплевать.<br>
+          Он ищет в кровавом месиве<br>
+          Свою замолчавшую мать.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-47 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLVII</div>
+          <h2 class="poem-block__title">О женщинах</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          – Все хочется увидеть, повстречать,<br>
+          Кого, не встретив, можно умирать?<br>
+          – Развратных женщин.<br>
+          – В ауле умирает человек,<br>
+          Кого из нас запомнит он навек?<br>
+          – Любимых женщин.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-48 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLVIII</div>
+          <h2 class="poem-block__title">Дождик весенний</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1980</div>
+        </div>
+
+        <div class="poem-stanza">
+          Дождик весенний,<br>
+          великое чудо!<br>
+          Дождик в горах<br>
+          умывает следы,
+        </div>
+        <div class="poem-stanza">
+          Там, где ходили мы,<br>
+          там, где смеялись,<br>
+          Там, где друг другу<br>
+          дарили цветы.
+        </div>
+        <div class="poem-stanza">
+          Дождик смывает<br>
+          пылинки с травинок,<br>
+          Камни большие<br>
+          с натруженных скал.
+        </div>
+        <div class="poem-stanza">
+          Будто бы горы<br>
+          из добрых дождинок,<br>
+          Будто в горах<br>
+          и не падал обвал.
+        </div>
+        <div class="poem-stanza">
+          Дождик и солнце,<br>
+          и мир, будто новый,<br>
+          Веселый и звонкий<br>
+          хрустит подо мной.
+        </div>
+        <div class="poem-stanza">
+          Дождик, прошу я,<br>
+          брызни-ка снова,<br>
+          Дождик, прошу я<br>
+          печаль мою смой.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-49 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">XLIX</div>
+          <h2 class="poem-block__title">Если любовь жива</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 2001</div>
+        </div>
+
+        <div class="poem-stanza">
+          Аднану Хаидову<br>
+          Голова болит<br>
+          Или не спится,<br>
+          Долги замучили,
+        </div>
+        <div class="poem-stanza">
+          Дела не идут.<br>
+          И дольше века<br>
+          День проклятый<br>
+          Длится:
+        </div>
+        <div class="poem-stanza">
+          Все нипочем,<br>
+          Коль не тянут в суд!<br>
+          Судьбы цветок<br>
+          Бутон под ноги клонит,
+        </div>
+        <div class="poem-stanza">
+          И вверх взлетает меч<br>
+          Над головой…<br>
+          И в час беды<br>
+          Тебя никто не вспомнит:
+        </div>
+        <div class="poem-stanza">
+          Все нипочем,<br>
+          Коль ты еще живой!<br>
+          Тебя клянут,<br>
+          А ты иди упрямо.
+        </div>
+        <div class="poem-stanza">
+          Пусть с горя ты<br>
+          И сник, и постарел,<br>
+          Пусть ты судьбой<br>
+          Поставлен к стенке прямо!
+        </div>
+        <div class="poem-stanza">
+          Все нипочем,<br>
+          Коль это не расстрел!<br>
+          Зима прошла.<br>
+          Сады цветут в нагорьях,
+        </div>
+        <div class="poem-stanza">
+          Соленых слез<br>
+          Не удержать в очах...<br>
+          Нет на земле<br>
+          Ни напастей, ни горя,
+        </div>
+        <div class="poem-stanza">
+          Коль не потух еще<br>
+          Любви твоей очаг!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-50 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">L</div>
+          <h2 class="poem-block__title">Ты поверь только мне</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Если с лаской к тебе<br>
+          Подойду,<br>
+          Ты не верь.<br>
+          Разве ложь не способна
+        </div>
+        <div class="poem-stanza">
+          Быть сладкой!<br>
+          Коль улыбкой тебя одарю,<br>
+          Ты не верь.<br>
+          Улыбаться могут и гадкие.
+        </div>
+        <div class="poem-stanza">
+          Ты не верь моим клятвам:<br>
+          Клянется и льстец.<br>
+          Ты не верь моим вздохам,<br>
+          Вздохнет и подлец,
+        </div>
+        <div class="poem-stanza">
+          Ты не верь моей песне,<br>
+          Ложь бывает и в ней,<br>
+          Ни наветам, ни сплетням,<br>
+          Ни тому, что сгорю я в огне!
+        </div>
+        <div class="poem-stanza">
+          Ты не верь никому,<br>
+          Ты поверь только мне!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-51 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LI</div>
+          <h2 class="poem-block__title">Расцветает ли яблоня в саду</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1976</div>
+        </div>
+
+        <div class="poem-stanza">
+          Расцветет ли яблоня в саду,<br>
+          Солнце ли опустится к закату,<br>
+          Отчего мне грустно не пойму,<br>
+          Словно побежденному солдату.
+        </div>
+        <div class="poem-stanza">
+          Отчего как ворон почернел?<br>
+          Так легко с мечтами попрощался.<br>
+          Ведь я столько песен не допел,<br>
+          Девушке в любви не объяснялся.
+        </div>
+        <div class="poem-stanza">
+          Закачалась подо мной земля,<br>
+          Не забыть мне до скончанья века,<br>
+          Как рыдала девушка одна,<br>
+          Повстречав плохого человека.
+        </div>
+        <div class="poem-stanza">
+          Забывая путь, что вами начат,<br>
+          Забывая все, что в мире есть,<br>
+          Вы утешьте девушку, что плачет,<br>
+          Ведь жива еще мужская честь.
+        </div>
+        <div class="poem-stanza">
+          Вы ее, обманутую словом,<br>
+          Силой слова покорите вновь.<br>
+          Пусть она поверит в радость снова,<br>
+          В чистую пьянящую любовь!
+        </div>
+        <div class="poem-stanza">
+          Расцветает яблоня в саду,<br>
+          Солнце опускается к закату.<br>
+          С радостной улыбкой я иду<br>
+          К девушке, что плакала когда-то.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-52 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LII</div>
+          <h2 class="poem-block__title">Ты смеешься и плачешь</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Ты смеешься и плачешь,<br>
+          Негодуешь, грустишь,<br>
+          Ты мои неудачи<br>
+          Никогда не простишь.
+        </div>
+        <div class="poem-stanza">
+          Злоба ряжется местью,<br>
+          Словно грех тяжела.<br>
+          Я клянусь своей честью,<br>
+          Не желал тебе зла!
+        </div>
+        <div class="poem-stanza">
+          Тяжко падают веки,<br>
+          Тает горя комок.<br>
+          Мы чужие навеки –<br>
+          Мне до гроба урок.
+        </div>
+        <div class="poem-stanza">
+          Не найду себе места:<br>
+          Жизнь в тупик завела.<br>
+          Я клянусь своей честью,<br>
+          Не желал тебе зла!
+        </div>
+        <div class="poem-stanza">
+          Надо мною лишь неба<br>
+          Неживой уголек,<br>
+          Значит, в мире я не был,<br>
+          Коль тебя не сберег,
+        </div>
+        <div class="poem-stanza">
+          Я из слабого теста,<br>
+          Ты из светлого сна!<br>
+          Я клянусь своей честью,<br>
+          Не желал тебе зла!
+        </div>
+      </div>
+
+      <!-- ── Poem RU-53 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LIII</div>
+          <h2 class="poem-block__title">Там голуби целуются</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          (По мотивам тюремного фольклора)<br>
+          Умерьте коней<br>
+          Столь замученный бег,<br>
+          Не ссорьтесь, люди,
+        </div>
+        <div class="poem-stanza">
+          Ради бога, тише!<br>
+          Такой красы не видел я вовек:<br>
+          Там голуби целуются на крыше.<br>
+          Вновь полон мир
+        </div>
+        <div class="poem-stanza">
+          Жестокости и зла,<br>
+          Вновь где-то над ягненком<br>
+          Коршун рыщет.<br>
+          Вновь стонут о беде колокола,
+        </div>
+        <div class="poem-stanza">
+          Но голуби целуются на крыше.<br>
+          Не ссорьтесь, старцы,<br>
+          Ваш напрасен спор.<br>
+          Любовь всегда одной
+        </div>
+        <div class="poem-stanza">
+          Свободой дышит.<br>
+          И не указ ей даже прокурор.<br>
+          Ведь голуби целуются на крыше.<br>
+          Уснули молнии,
+        </div>
+        <div class="poem-stanza">
+          Не слышен бег коней.<br>
+          И ветра вой становится все тише.<br>
+          Весь мир затих<br>
+          Под сенью тополей:
+        </div>
+        <div class="poem-stanza">
+          Там голуби целуются на крыше.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-54 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LIV</div>
+          <h2 class="poem-block__title">Меня исцеляла улыбка твоя</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1975</div>
+        </div>
+
+        <div class="poem-stanza">
+          Устав от чужих<br>
+          неприветливых взглядов,<br>
+          К тебе приходил я,<br>
+          весь мир прокляня,
+        </div>
+        <div class="poem-stanza">
+          Ты тихо, как дождик,<br>
+          шептала: «Не надо»,<br>
+          Меня исцеляла<br>
+          улыбка твоя.
+        </div>
+        <div class="poem-stanza">
+          Познал я полета<br>
+          дрожащие струны,<br>
+          И стоны паденья<br>
+          я слышал сполна.
+        </div>
+        <div class="poem-stanza">
+          Но снова упрямо<br>
+          стремиться к вершине<br>
+          Меня заставляла<br>
+          надежда твоя.
+        </div>
+        <div class="poem-stanza">
+          Уводит дорога<br>
+          сквозь штормы и ветер,<br>
+          Могуч я, твой образ<br>
+          с собою храня.
+        </div>
+        <div class="poem-stanza">
+          И если убьет меня<br>
+          что-то на свете,<br>
+          Так это лишь<br>
+          только измена твоя.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-55 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LV</div>
+          <h2 class="poem-block__title">Королевой тебя назову</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1975</div>
+        </div>
+
+        <div class="poem-stanza">
+          Я с тобой разделю все удачи,<br>
+          Королевой тебя назову.<br>
+          Без любимой ничто я не значу,<br>
+          Без любимой напрасно живу.<br>
+          И не может быть в жизни иначе:<br>
+          Одинокая радость горька.<br>
+          От тебя спрячу лишь неудачи,<br>
+          Все, что дарит мне боль и тоска.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-56 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LVI</div>
+          <h2 class="poem-block__title">Солнцу навстречу я вышел</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1979</div>
+        </div>
+
+        <div class="poem-stanza">
+          Солнцу, как к брату,<br>
+          навстречу я вышел,<br>
+          И в синем раздолье<br>
+          я птицей летал.
+        </div>
+        <div class="poem-stanza">
+          Я молний не видел,<br>
+          я грозы не слышал,<br>
+          Когда для любимой<br>
+          цветы собирал.
+        </div>
+        <div class="poem-stanza">
+          Забыл я обиды и<br>
+          старые ссоры,<br>
+          Друзьям непрошенным<br>
+          ошибки прощал.
+        </div>
+        <div class="poem-stanza">
+          Кругом улыбались<br>
+          сердитые горы,<br>
+          Когда для любимой<br>
+          цветы собирал.
+        </div>
+        <div class="poem-stanza">
+          И я на такие<br>
+          взбирался высоты,<br>
+          Где даже во снах<br>
+          никогда не бывал.
+        </div>
+        <div class="poem-stanza">
+          Забыл, ежедневные<br>
+          жизни заботы,<br>
+          Когда для любимой<br>
+          цветы собирал
+        </div>
+        <div class="poem-stanza">
+          Я шел, позабыв<br>
+          о деньгах и заботах,<br>
+          Я старый наш мир<br>
+          для себя открывал,
+        </div>
+        <div class="poem-stanza">
+          В неповторимых<br>
+          неброских красотах,<br>
+          Когда для любимой<br>
+          цветы собирал
+        </div>
+        <div class="poem-stanza">
+          И понял я цену<br>
+          беззлобному небу,<br>
+          Цветам, что росли меж<br>
+          приветливых скал,
+        </div>
+        <div class="poem-stanza">
+          Любви, что подобна<br>
+          насущному хлебу,..<br>
+          Когда для любимой<br>
+          цветы собирал.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-58 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LVIII</div>
+          <h2 class="poem-block__title">★ ★ ★</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел»</div>
+        </div>
+
+        <div class="poem-stanza">
+          Мы бежим, спотыкаясь,<br>
+          куда-то<br>
+          Мы бежим,<br>
+          спотыкаясь, куда-то,
+        </div>
+        <div class="poem-stanza">
+          Мы кого-то<br>
+          увидеть спешим,<br>
+          Второпях<br>
+          от зари до заката
+        </div>
+        <div class="poem-stanza">
+          Ошибаемся,<br>
+          плачем, грустим.<br>
+          Мы спешим,<br>
+          не простившись с родными,
+        </div>
+        <div class="poem-stanza">
+          Не сказавши<br>
+          любимым «люблю»,<br>
+          Не простивши друзей,<br>
+          не прощенные ими,
+        </div>
+        <div class="poem-stanza">
+          Как во сне,<br>
+          мы куда-то спешим.<br>
+          Только время<br>
+          нам вслед улыбается.
+        </div>
+        <div class="poem-stanza">
+          Полон стойкости<br>
+          времени бег.<br>
+          Лихо, гикнув,<br>
+          в карьер не срывается,
+        </div>
+        <div class="poem-stanza">
+          Пусть бежит<br>
+          и спешит человек.<br>
+          Мы когда-то<br>
+          устанем и станем,
+        </div>
+        <div class="poem-stanza">
+          Не закончив<br>
+          поход иль полет.<br>
+          Мы когда-то<br>
+          до боли вспомянем
+        </div>
+        <div class="poem-stanza">
+          Все, что время<br>
+          назад не вернет.<br>
+          Те слова,<br>
+          что сказать не успели,
+        </div>
+        <div class="poem-stanza">
+          Тех друзей,<br>
+          что сберечь не смогли,<br>
+          Звуки песен,<br>
+          пропетых в метели,
+        </div>
+        <div class="poem-stanza">
+          Что до женских<br>
+          сердец не дошли.<br>
+          Вновь мы в руки<br>
+          пондуры возьмем,
+        </div>
+        <div class="poem-stanza">
+          Не заметив,<br>
+          что струны порвались,<br>
+          К матерям<br>
+          за советом придем,
+        </div>
+        <div class="poem-stanza">
+          Только вот они<br>
+          нас не дождались.<br>
+          Вновь пойдем мы<br>
+          на свадьбы гулять,
+        </div>
+        <div class="poem-stanza">
+          Чтобы горянок<br>
+          красивых пленять,<br>
+          Толька наши<br>
+          виски в седине
+        </div>
+        <div class="poem-stanza">
+          Будут девушек<br>
+          стройных смущать<br>
+          Но запомнит<br>
+          спешащий джигит
+        </div>
+        <div class="poem-stanza">
+          Взгляд застрявший<br>
+          в сердце, что пуля.<br>
+          Если кто-то<br>
+          сегодня спешит,
+        </div>
+        <div class="poem-stanza">
+          Значит, вечером<br>
+          свадьба в ауле.<br>
+          Если кто<br>
+          не простившись ни с кем
+        </div>
+        <div class="poem-stanza">
+          Улетает<br>
+          в небесную роздымь,<br>
+          Значит, скоро<br>
+          откроются всем,
+        </div>
+        <div class="poem-stanza">
+          Никому<br>
+          неизвестные звезды.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-60 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LX</div>
+          <h2 class="poem-block__title">★ ★ ★</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1989</div>
+        </div>
+
+        <div class="poem-stanza">
+          Уходят старики,<br>
+          построившие мир<br>
+          (Вспоминая Р.Гамзатова)<br>
+          Уходят старики,
+        </div>
+        <div class="poem-stanza">
+          построившие мир,<br>
+          Уходят навсегда,<br>
+          даруя свет улыбок.<br>
+          Седоголовые спокойны,
+        </div>
+        <div class="poem-stanza">
+          как Памир,<br>
+          Достойно ждут свой час,<br>
+          что вот уж близок.<br>
+          Кругом весна зовет,
+        </div>
+        <div class="poem-stanza">
+          смеется, плачет…<br>
+          И незнакомых песен<br>
+          слышен звон:<br>
+          И уж не он –
+        </div>
+        <div class="poem-stanza">
+          другой мальчишка скачет.<br>
+          И уж не он –<br>
+          другой впервой влюблен<br>
+          Вот старый горец
+        </div>
+        <div class="poem-stanza">
+          камнем у стены<br>
+          Уставился<br>
+          на горную дорогу.<br>
+          На ней чужих шагов
+        </div>
+        <div class="poem-stanza">
+          следы видны,<br>
+          Но и его следы остались,<br>
+          слава богу!<br>
+          Он строил здесь
+        </div>
+        <div class="poem-stanza">
+          надежные мосты,<br>
+          К сердцам людей<br>
+          дороги прорубал.<br>
+          Обидев друга,
+        </div>
+        <div class="poem-stanza">
+          говорил «прости»<br>
+          И женщине<br>
+          измены не прощал.<br>
+          Вновь девушки
+        </div>
+        <div class="poem-stanza">
+          красивы и стройны<br>
+          И юностью запахли<br>
+          в сердце грезы…<br>
+          Из добрых глаз,
+        </div>
+        <div class="poem-stanza">
+          что правдою полны,<br>
+          На землю черную<br>
+          текут печально слезы.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-61 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LXI</div>
+          <h2 class="poem-block__title">★ ★ ★</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1979</div>
+        </div>
+
+        <div class="poem-stanza">
+          горское сердце<br>
+          – Что же взгрустнуло ты,<br>
+          горское сердце,<br>
+          Или под солнцем
+        </div>
+        <div class="poem-stanza">
+          не видело зла?<br>
+          – Видело зло я,<br>
+          но мне не забыть<br>
+          Плачущих женщин
+        </div>
+        <div class="poem-stanza">
+          слепые глаза.<br>
+          – Что же взъярилось ты,<br>
+          горское сердце,<br>
+          К сплетням подонков
+        </div>
+        <div class="poem-stanza">
+          тебе ль привыкать?<br>
+          – Видело. сплетня<br>
+          жалом змеиным<br>
+          Женщин достойных
+        </div>
+        <div class="poem-stanza">
+          пошла клеветать.<br>
+          – Что же ты струсило,<br>
+          горское сердце,<br>
+          Может, страшишься
+        </div>
+        <div class="poem-stanza">
+          в бою умереть?<br>
+          – Бой принимаю я,<br>
+          коли за родину<br>
+          В ссоре страшна мне
+        </div>
+        <div class="poem-stanza">
+          глупая смерть.<br>
+          – Что ж обомлело ты,<br>
+          горское сердце,<br>
+          В мирное время
+        </div>
+        <div class="poem-stanza">
+          плененное кем?<br>
+          – Взгляду красавицы<br>
+          вмиг покорилось<br>
+          Я, добровольно
+        </div>
+        <div class="poem-stanza">
+          взятое в плен.
+        </div>
+      </div>
+
+      <!-- ── Poem RU-62 ── -->
+      <div class="poem-block reveal">
+        <div class="poem-block__header">
+          <div class="poem-block__num">LXII</div>
+          <h2 class="poem-block__title">★ ★ ★</h2>
+          <div class="poem-block__year">Из сборника «Я веду себя на расстрел» · 1998</div>
+        </div>
+
+        <div class="poem-stanza">
+          друзья и враги<br>
+          Коль никто с усмешкой<br>
+          мне в глаза не взглянет,<br>
+          И украдкой гадко
+        </div>
+        <div class="poem-stanza">
+          вслед не проклянет,<br>
+          Знайте, люди, тотчас,<br>
+          что меня не станет:<br>
+          Без врагов на свете,
+        </div>
+        <div class="poem-stanza">
+          кто же проживет!<br>
+          Коль никто на помощь<br>
+          звать меня не станет<br>
+          И пожать мне руку
+        </div>
+        <div class="poem-stanza">
+          нужным не сочтет,<br>
+          Знайте, люди, тотчас,<br>
+          что меня не станет:<br>
+          Без друзей на свете
+        </div>
+        <div class="poem-stanza">
+          кто же проживет!
+        </div>
+      </div>
+
+        </div><!-- /.poems-main -->
+      </div><!-- /.poems-layout -->
+    </div><!-- /.container -->
   </section>
 
   <!-- ═══ FOOTER ═══ -->
@@ -1195,6 +3463,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
