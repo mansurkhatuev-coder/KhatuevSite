@@ -21,21 +21,22 @@
     .book-full-card:last-child { border-bottom: none; }
     .book-full-card__cover {
       position: relative;
-      aspect-ratio: 3/4;
+      aspect-ratio: 2/3;
       overflow: hidden;
       background: var(--bg-card);
       flex-shrink: 0;
+      border: 1px solid rgba(200,168,120,0.14);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.4);
     }
     .book-full-card__img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
-      filter: grayscale(15%) brightness(0.9);
-      transition: filter 0.4s;
+      object-position: center;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .book-full-card:hover .book-full-card__img {
-      filter: grayscale(0%) brightness(1);
+      transform: scale(1.03);
     }
     .book-full-card__body { display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
     .book-full-card__year {
@@ -120,7 +121,7 @@
       <!-- Book 1 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/photo_2023-06-20_12-5238-55.jpg" alt="Яхалахь Нохчийчоь" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/yahalah.jpg" alt="Яхалахь Нохчийчоь" class="book-full-card__img" loading="lazy">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">2007 · Нохчийн мотт</div>
@@ -139,7 +140,7 @@
       <!-- Book 2 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/photo_2023-06-20_12-58-49.jpg" alt="Берийн ирс" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/beriin.jpg" alt="Берийн ирс" class="book-full-card__img" loading="lazy">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>
@@ -158,7 +159,7 @@
       <!-- Book 3 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/photo_2023-06-20_12-5832-593.jpg" alt="Аьрзунан илли" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/arzunan.jpg" alt="Аьрзунан илли" class="book-full-card__img" loading="lazy">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">Нохчийн мотт · Поэма</div>
@@ -176,7 +177,7 @@
       <!-- Book 4 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/-6.jpg" alt="Я веду себя на расстрел" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/rasstrel.jpg" alt="Я веду себя на расстрел" class="book-full-card__img" loading="lazy">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">2008 · Русский язык</div>
@@ -194,7 +195,7 @@
       <!-- Book 5 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/2ace954c-4f71-cd87-3b90-d8db5298a95c.jpg" alt="Бусулба сан Нохчийчоь" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/busulba.jpg" alt="Бусулба сан Нохчийчоь" class="book-full-card__img" loading="lazy">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>

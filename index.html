@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="preload" as="image" href="images/hero-caucasus.jpg?v=4">
 </head>
 <body>
 
@@ -43,7 +44,14 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero-photo-shift">
+        <div class="hero-photo"></div>
+      </div>
+      <div class="hero-mist hero-mist--far"></div>
+      <div class="hero-mist hero-mist--near"></div>
+      <div class="hero-glow"></div>
+    </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="hero__eyebrow">Народный писатель Чеченской Республики</div>
@@ -53,7 +61,7 @@
       </h1>
       <p class="hero__dates">1952 — 2011</p>
       <blockquote class="hero__quote">
-        «Со наггахь хьахавана,<br>
+        «Со наггахь хьахаван,<br>
         Даг1ахь цхьа денош,<br>
         Даггара дош алий,<br>
         1одика йе.»
@@ -126,7 +134,7 @@
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/photo_2023-06-20_12-5238-55.jpg" alt="Яхалахь Нохчийчоь" class="book-card__img" loading="lazy">
+            <img src="images/covers/yahalah.jpg" alt="Яхалахь Нохчийчоь" class="book-card__img" loading="lazy">
             <div class="book-card__sheen"></div>
             <div class="book-card__action">
               <a href="files/1.pdf" class="book-card__dl" target="_blank" download>
@@ -137,14 +145,14 @@
           <div class="book-card__info">
             <div class="book-card__num">2007</div>
             <div class="book-card__title">Яхалахь Нохчийчоь</div>
-            <div class="book-card__sub">«Праведная моя Чечня»</div>
+            <div class="book-card__sub">«Живи моя Чечня»</div>
             <span class="book-card__status book-card__status--available">PDF доступен</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/photo_2023-06-20_12-58-49.jpg" alt="Берийн ирс" class="book-card__img" loading="lazy">
+            <img src="images/covers/beriin.jpg" alt="Берийн ирс" class="book-card__img" loading="lazy">
             <div class="book-card__sheen"></div>
             <div class="book-card__action">
               <a href="files/2.pdf" class="book-card__dl" target="_blank" download>
@@ -155,14 +163,14 @@
           <div class="book-card__info">
             <div class="book-card__num">Сборник стихов</div>
             <div class="book-card__title">Берийн ирс</div>
-            <div class="book-card__sub">«Судьба детей»</div>
+            <div class="book-card__sub">«Счастье детей»</div>
             <span class="book-card__status book-card__status--available">PDF доступен</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/photo_2023-06-20_12-5832-593.jpg" alt="Аьрзунан илли" class="book-card__img" loading="lazy">
+            <img src="images/covers/arzunan.jpg" alt="Аьрзунан илли" class="book-card__img" loading="lazy">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
@@ -175,7 +183,7 @@
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/-6.jpg" alt="Я веду себя на расстрел" class="book-card__img" loading="lazy">
+            <img src="images/covers/rasstrel.jpg" alt="Я веду себя на расстрел" class="book-card__img" loading="lazy">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
@@ -188,13 +196,13 @@
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/2ace954c-4f71-cd87-3b90-d8db5298a95c.jpg" alt="Бусулба сан Нохчийчоь" class="book-card__img" loading="lazy">
+            <img src="images/covers/busulba.jpg" alt="Бусулба сан Нохчийчоь" class="book-card__img" loading="lazy">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
             <div class="book-card__num">Сборник стихов</div>
             <div class="book-card__title">Бусулба сан Нохчийчоь</div>
-            <div class="book-card__sub">«Моя мусульманская Чечня»</div>
+            <div class="book-card__sub">«Праведная моя Чечня»</div>
             <span class="book-card__status">Скоро</span>
           </div>
         </div>
