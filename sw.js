@@ -40,7 +40,8 @@ const CORE_ASSETS = [
   "images/covers/yahalah.webp?v=2",
   "images/ornaments/chechen-rosette.svg?v=2",
   "images/ornaments/chechen-scroll-divider.svg?v=2",
-  "images/ornaments/chechen-vertical-border.svg?v=2"
+  "images/ornaments/chechen-vertical-border.svg?v=2",
+  "images/ornaments/chechen-woven-divider.webp?v=1"
 ];
 
 const toScopedUrl = (path) => new URL(path, SCOPE_URL).href;

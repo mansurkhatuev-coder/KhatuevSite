@@ -1529,6 +1529,12 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   opacity: var(--ornament-opacity);
   transform-origin: left center;
 }
+.section-header--song::after {
+  width: min(12.5rem, 48vw);
+  aspect-ratio: 10 / 1;
+  background-image: url('../images/ornaments/chechen-woven-divider.webp?v=1');
+  --ornament-opacity: .9;
+}
 .section-header.reveal::after,
 .poems-lang-header.reveal::after {
   clip-path: inset(0 100% 0 0);
