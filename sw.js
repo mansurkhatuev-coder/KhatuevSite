@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "khatuev-pwa-";
-const CACHE_VERSION = "v8";
+const CACHE_VERSION = "v9";
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `${CACHE_PREFIX}assets-${CACHE_VERSION}`;
 const SCOPE_URL = new URL(self.registration.scope);
@@ -13,7 +13,7 @@ const CORE_ASSETS = [
   "reader.html",
   "offline.html",
   "manifest.webmanifest",
-  "css/style.css?v=34",
+  "css/style.css?v=35",
   "css/reader.css?v=4",
   "css/poems-reading.css?v=1",
   "css/voice-player.css?v=1",
@@ -40,8 +40,7 @@ const CORE_ASSETS = [
   "images/covers/yahalah.webp?v=2",
   "images/ornaments/chechen-rosette.svg?v=2",
   "images/ornaments/chechen-scroll-divider.svg?v=2",
-  "images/ornaments/chechen-vertical-border.svg?v=2",
-  "images/ornaments/chechen-woven-divider.webp?v=1"
+  "images/ornaments/chechen-woven-border.webp?v=1"
 ];
 
 const toScopedUrl = (path) => new URL(path, SCOPE_URL).href;
