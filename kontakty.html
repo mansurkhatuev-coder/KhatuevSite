@@ -2,13 +2,32 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (() => {
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isStandalone = navigator.standalone === true
+        || window.matchMedia('(display-mode: standalone)').matches;
+      document.querySelector('meta[name="viewport"]').setAttribute(
+        'content',
+        `width=device-width, initial-scale=1.0, viewport-fit=${isIOS && !isStandalone ? 'contain' : 'cover'}`
+      );
+    })();
+  </script>
+  <meta name="theme-color" content="#07070A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Хатуев">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/icons/pwa-book-towers-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-book-towers-180.png">
   <meta name="description" content="Контакты — Хатуев Абдул-Хамид Арбиевич, Народный писатель Чеченской Республики">
   <title>Контакты — Хатуев Абдул-Хамид Арбиевич</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=32">
+  <link rel="stylesheet" href="css/style.css?v=35">
   <style>
     .contact-portrait {
       width: 100%;
@@ -178,6 +197,7 @@
 </div>
   </footer>
 
-  <script src="js/main.js?v=15"></script>
+  <script src="js/main.js?v=21"></script>
+  <script src="js/pwa.js?v=1"></script>
 </body>
 </html>

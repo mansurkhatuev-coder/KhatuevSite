@@ -1,0 +1,31 @@
+{
+  "name": "Хатуев Абдул-Хамид Арбиевич",
+  "short_name": "Хатуев",
+  "description": "Стихи, книги и голос Абдул-Хамида Хатуева",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07070A",
+  "theme_color": "#07070A",
+  "icons": [
+    {
+      "src": "images/icons/pwa-book-towers-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/pwa-book-towers-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icons/pwa-book-towers-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
