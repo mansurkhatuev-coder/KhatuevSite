@@ -1568,7 +1568,7 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   height: auto;
   object-fit: contain;
   opacity: var(--ornament-opacity);
-  filter: drop-shadow(0 1px 10px rgba(0,0,0,.2));
+  filter: grayscale(1) sepia(.62) saturate(.58) brightness(.9) drop-shadow(0 1px 10px rgba(0,0,0,.2));
   transform: translateY(-50%);
   animation: chechen-ornament-arrive 1.25s var(--ease) .32s both;
 }
