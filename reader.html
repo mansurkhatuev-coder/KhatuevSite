@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Читайте книги Хатуева Абдул-Хамида Арбиевича онлайн.">
+  <title>Читать книгу — Хатуев Абдул-Хамид Арбиевич</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="stylesheet" href="css/reader.css?v=1">
+</head>
+<body class="page-reader">
+  <nav class="nav scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">Хатуев Абдул-Хамид</span>
+        <span class="nav__logo-title">Народный писатель ЧР</span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html" class="active" aria-current="page">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Меню" aria-expanded="false" aria-controls="nav-drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true" inert>
+    <ul>
+      <li><a href="index.html">Главная</a></li>
+      <li><a href="knigi.html">Книги</a></li>
+      <li><a href="stikhi.html">Стихи</a></li>
+      <li><a href="kontakty.html">Контакты</a></li>
+    </ul>
+  </div>
+
+  <main class="reader-page">
+    <div class="reader-page__inner">
+      <header class="reader-heading">
+        <div class="eyebrow">Электронная библиотека</div>
+        <h1 id="reader-title">Открываем книгу</h1>
+        <p class="reader-heading__meta" id="reader-meta">Чтение онлайн</p>
+        <a class="reader-back" href="knigi.html"><span aria-hidden="true">←</span> К книгам</a>
+      </header>
+
+      <section class="reader-card" aria-label="Просмотр книги">
+        <div class="reader-toolbar" id="reader-toolbar" aria-label="Управление страницами" hidden>
+          <div class="reader-toolbar__pages">
+            <button class="reader-control" id="reader-prev" type="button" aria-label="Предыдущая страница" title="Предыдущая страница" disabled>
+              <span aria-hidden="true">←</span>
+            </button>
+            <label class="reader-page-label" for="reader-page-number">Страница</label>
+            <input class="reader-page-number" id="reader-page-number" type="number" min="1" value="1" inputmode="numeric" aria-label="Номер страницы" disabled>
+            <span class="reader-page-total">из <span id="reader-page-count">—</span></span>
+            <button class="reader-control" id="reader-next" type="button" aria-label="Следующая страница" title="Следующая страница" disabled>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+          <div class="reader-toolbar__zoom" aria-label="Масштаб страницы">
+            <button class="reader-control reader-control--text" id="reader-zoom-out" type="button" aria-label="Уменьшить масштаб" title="Уменьшить масштаб" disabled>−</button>
+            <button class="reader-control reader-control--fit" id="reader-fit" type="button" disabled>По ширине</button>
+            <button class="reader-control reader-control--text" id="reader-zoom-in" type="button" aria-label="Увеличить масштаб" title="Увеличить масштаб" disabled>+</button>
+          </div>
+        </div>
+
+        <p class="reader-status" id="reader-status" role="status" aria-live="polite">Загружаем книгу…</p>
+        <div class="reader-error" id="reader-error" role="alert" hidden>
+          <div class="eyebrow">Не удалось открыть книгу</div>
+          <p id="reader-error-message">Проверьте соединение и попробуйте открыть книгу ещё раз.</p>
+          <a class="btn btn--gold" href="knigi.html">Вернуться к книгам</a>
+        </div>
+        <div class="reader-page-frame" id="reader-page-frame" hidden>
+          <canvas id="reader-canvas" aria-label="Страница книги"></canvas>
+        </div>
+      </section>
+      <p class="reader-note">Страницы книги открываются прямо на сайте.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__logo">Хатуев <span>Абдул-Хамид</span></div>
+      <ul class="footer__nav">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="knigi.html">Книги</a></li>
+        <li><a href="stikhi.html">Стихи</a></li>
+        <li><a href="kontakty.html">Контакты</a></li>
+      </ul>
+      <p class="footer__copy">© 2026 Все права защищены</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=15"></script>
+  <!-- PDF.js 6.4.299, vendored under the Apache-2.0 license. -->
+  <script type="module" src="js/book-reader.js?v=1"></script>
+</body>
+</html>

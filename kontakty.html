@@ -8,15 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=25">
   <style>
     .contact-portrait {
       width: 100%;
       max-width: 360px;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      object-position: top center;
-      filter: grayscale(30%) contrast(1.05);
+      height: auto;
+      object-fit: contain;
       display: block;
     }
     .contacts-layout {
@@ -24,7 +22,7 @@
       grid-template-columns: 300px 1fr;
       gap: clamp(3rem, 6vw, 6rem);
       align-items: start;
-      margin-top: 3rem;
+      margin-top: 0;
     }
     .gold-line {
       width: 100%;
@@ -38,7 +36,7 @@
     }
   </style>
 </head>
-<body>
+<body class="page-contacts">
 
   <!-- ═══ NAVIGATION ═══ -->
   <nav class="nav scrolled" id="nav">
@@ -53,13 +51,13 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html" class="active">Контакты</a></li>
       </ul>
-      <button class="nav__hamburger" aria-label="Меню">
+      <button class="nav__hamburger" aria-label="Меню" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="nav__drawer">
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true" inert>
     <ul>
       <li><a href="index.html">Главная</a></li>
       <li><a href="knigi.html">Книги</a></li>
@@ -70,7 +68,7 @@
 
   <!-- ═══ PAGE HERO ═══ -->
   <section class="page-hero" style="padding-top: var(--nav-h);">
-    <div class="page-hero__bg" style="background-image: url('images/edfmin1.jpg');"></div>
+    <div class="page-hero__bg" style="background-image: url('images/ushkaloy-towers.jpg'); background-position: 50% 58%;"></div>
     <div class="page-hero__overlay"></div>
     <div class="page-hero__content">
       <div class="eyebrow">Связаться с нами</div>
@@ -87,7 +85,7 @@
         <!-- Portrait column -->
         <div class="reveal">
           <img
-            src="images/photo_2023-06-20_12-58-521.jpg"
+            src="images/portrait-official.jpg"
             alt="Хатуев Абдул-Хамид Арбиевич"
             class="contact-portrait"
             loading="lazy"
@@ -113,7 +111,7 @@
             <div class="contact-item">
               <div class="contact-item__label">Телефон</div>
               <div class="contact-item__value">
-                <a href="tel:+79375215144">+7 963 397-42-95</a>
+                <a href="tel:+79633974295">+7 963 397-42-95</a>
               </div>
               <div class="contact-item__note">Мансур Хатуев</div>
             </div>
@@ -146,16 +144,16 @@
           <div class="gold-line reveal"></div>
 
           <div class="reveal" style="max-width: 460px;">
-            <div class="eyebrow" style="margin-bottom:1rem;">Скачать книги</div>
+            <div class="eyebrow" style="margin-bottom:1rem;">Читайте книги онлайн</div>
             <p style="color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; line-height:1.8;">
-              Два сборника доступны для бесплатного скачивания в формате PDF.
+              Откройте электронные издания прямо на сайте.
             </p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <a href="files/1.pdf" class="btn btn--gold" download target="_blank">
-                ↓ Яхалахь Нохчийчоь
+              <a href="reader.html?book=1" class="btn btn--gold">
+                Йахалахъ, Нохчийчоь
               </a>
-              <a href="files/2.pdf" class="btn btn--outline" download target="_blank">
-                ↓ Берийн ирс
+              <a href="reader.html?book=2" class="btn btn--outline">
+                Берийн ирс
               </a>
             </div>
           </div>
@@ -176,10 +174,10 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html">Контакты</a></li>
       </ul>
-      <p class="footer__copy">© 2025 Все права защищены</p>
-    </div>
+      <p class="footer__copy">© 2026 Все права защищены</p>
+</div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=15"></script>
 </body>
 </html>

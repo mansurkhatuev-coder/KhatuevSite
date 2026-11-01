@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
-  <link rel="preload" as="image" href="images/hero-caucasus.jpg?v=4">
+  <link rel="stylesheet" href="css/style.css?v=25">
+  <link rel="preload" as="image" href="images/ushkaloy-hero-photoreal-20261101.webp" fetchpriority="high">
 </head>
 <body>
 
@@ -26,14 +26,14 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html">Контакты</a></li>
       </ul>
-      <button class="nav__hamburger" aria-label="Меню" aria-expanded="false">
+      <button class="nav__hamburger" aria-label="Меню" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <!-- Mobile drawer -->
-  <div class="nav__drawer" aria-hidden="true">
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true" inert>
     <ul>
       <li><a href="index.html">Главная</a></li>
       <li><a href="knigi.html">Книги</a></li>
@@ -45,13 +45,12 @@
   <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero__bg" aria-hidden="true">
-      <div class="hero-photo-shift">
-        <div class="hero-photo"></div>
-      </div>
+      <div class="hero-photo"></div>
       <div class="hero-mist hero-mist--far"></div>
       <div class="hero-mist hero-mist--near"></div>
       <div class="hero-glow"></div>
     </div>
+    <img class="hero-ornament" src="images/ornaments/chechen-vertical-border.svg?v=2" alt="" aria-hidden="true">
     <div class="hero__overlay"></div>
     <div class="hero__content">
       <div class="hero__eyebrow">Народный писатель Чеченской Республики</div>
@@ -68,13 +67,129 @@
         <span class="hero__quote-attr">Из стихотворений</span>
       </blockquote>
       <div class="hero__cta">
-        <a href="knigi.html" class="btn btn--gold">Читать книги</a>
-        <a href="stikhi.html" class="btn btn--outline">Стихи</a>
+        <a href="stikhi.html" class="btn btn--gold">Читать стихи</a>
+        <a href="#voice" class="btn btn--outline">Слушать голос автора</a>
       </div>
     </div>
-    <div class="hero__scroll-indicator">
-      <div class="hero__scroll-line"></div>
-      <span class="hero__scroll-text">Прокрутить</span>
+  </section>
+
+  <section class="archive-search" aria-label="Поиск стихотворений">
+    <div class="container">
+      <label for="home-poem-search">Найдите стихотворение</label>
+      <form action="stikhi.html" method="get">
+        <input id="home-poem-search" name="q" type="search" placeholder="Название или знакомая строка…" aria-label="Название или строка стихотворения" required>
+        <button class="btn btn--gold" type="submit">Найти</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="selected-poems" aria-labelledby="selected-poems-heading">
+    <div class="container">
+      <div class="selected-poems__heading">
+        <div><div class="eyebrow">Избранное</div><h2 class="h2" id="selected-poems-heading">Начните <em>с нескольких строк</em></h2></div>
+        <a href="stikhi.html" class="selected-poems__all">Все стихотворения →</a>
+      </div>
+      <div class="selected-poems__grid">
+      <a class="selected-poem" href="stikhi.html#poem-1">
+        <span class="selected-poem__language">Чеченский</span>
+        <h3>Бусалба сан Нохчийчоь</h3>
+        <p>Вайн лаьмнех кхерсташ ю алу,<br>
+          Вайн ирсан дайъина доь.<br>
+          Ларйойла хьо везчу Дала,<br>
+          Бусалба сан Нохчийчоь!</p>
+        <span class="selected-poem__read">Читать стихотворение <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="selected-poem" href="stikhi.html#poem-25">
+        <span class="selected-poem__language">Русский · перевод</span>
+        <h3>Жизнь коротка</h3>
+        <p>На небе погасла звезда,<br>
+          В горах кто-то ранил оленя,<br>
+          И, кажется, жизнь коротка,<br>
+          Неужто подвластны мы тлену?</p>
+        <span class="selected-poem__read">Читать стихотворение <span aria-hidden="true">→</span></span>
+      </a>
+      <a class="selected-poem" href="stikhi.html#poem-64">
+        <span class="selected-poem__language">Русский</span>
+        <h3>Кружит снова воронье</h3>
+        <p>Кружит снова воронье надо мною,<br>
+          И беду вещает волчий вой,<br>
+          Клевета вползает в дом змеею,<br>
+          Вновь топор навис над головой.</p>
+        <span class="selected-poem__read">Читать стихотворение <span aria-hidden="true">→</span></span>
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="voice-archive section section--alt" id="voice" aria-labelledby="voice-heading">
+    <div class="container">
+      <div class="section-header voice-archive__heading reveal">
+        <div class="eyebrow">Живое слово</div>
+        <h2 class="h2" id="voice-heading">Голос <em>автора</em></h2>
+        <p class="lead">Стихотворения в исполнении Абдул-Хамида Хатуева.</p>
+      </div>
+
+      <ol class="voice-tracks" aria-label="Записи стихотворений">
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">01</span>
+          <div class="voice-track__info"><h3>Весет</h3><p>Читает автор · 0:56</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/veset.mp3" data-audio-title="Весет" aria-label="Слушать стихотворение «Весет»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">02</span>
+          <div class="voice-track__info"><h3>Даймохк</h3><p>Читает автор · 0:55</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/daymokhk.mp3" data-audio-title="Даймохк" aria-label="Слушать стихотворение «Даймохк»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">03</span>
+          <div class="voice-track__info"><h3>До1а</h3><p>Читает автор · 0:35</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/doa.mp3" data-audio-title="До1а" aria-label="Слушать стихотворение «До1а»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">04</span>
+          <div class="voice-track__info"><h3>Дорцехь</h3><p>Читает автор · 0:58</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/dortsekh.mp3" data-audio-title="Дорцехь" aria-label="Слушать стихотворение «Дорцехь»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">05</span>
+          <div class="voice-track__info"><h3>Дуьсур ду дуьне</h3><p>Читает автор · 0:45</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/dusur-du-dune.mp3" data-audio-title="Дуьсур ду дуьне" aria-label="Слушать стихотворение «Дуьсур ду дуьне»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">06</span>
+          <div class="voice-track__info"><h3>Зазадаьлла</h3><p>Читает автор · 0:43</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/zazadalla.mp3" data-audio-title="Зазадаьлла" aria-label="Слушать стихотворение «Зазадаьлла»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">07</span>
+          <div class="voice-track__info"><h3>Къонах</h3><p>Читает автор · 0:47</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/konakh.mp3" data-audio-title="Къонах" aria-label="Слушать стихотворение «Къонах»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">08</span>
+          <div class="voice-track__info"><h3>Нохчичоь</h3><p>Читает автор · 0:47</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/nokhchicho.mp3" data-audio-title="Нохчичоь" aria-label="Слушать стихотворение «Нохчичоь»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">09</span>
+          <div class="voice-track__info"><h3>Холхаз куй</h3><p>Читает автор · 0:53</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/kholkhaz-kuy.mp3" data-audio-title="Холхаз куй" aria-label="Слушать стихотворение «Холхаз куй»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+        <li class="voice-track reveal">
+          <span class="voice-track__number" aria-hidden="true">10</span>
+          <div class="voice-track__info"><h3>Юьртахошка</h3><p>Читает автор · 0:43</p></div>
+          <button class="voice-play" type="button" data-voice-play data-audio-src="audio/poems/yurtakhoshka.mp3" data-audio-title="Юьртахошка" aria-label="Слушать стихотворение «Юьртахошка»" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+        </li>
+      </ol>
+
+      <article class="voice-interview reveal">
+        <div class="voice-interview__copy">
+          <div class="eyebrow">Голос из семейного архива</div>
+          <h3>Интервью</h3>
+          <p>Запись беседы · 8:34</p>
+        </div>
+        <button class="voice-play" type="button" data-voice-play data-audio-src="audio/interview.mp3" data-audio-title="Интервью" aria-label="Слушать интервью" aria-pressed="false"><span class="voice-play__icon" aria-hidden="true">▶</span><span class="voice-play__label">Слушать</span></button>
+      </article>
     </div>
   </section>
 
@@ -98,7 +213,7 @@
         <div class="bio__text-col">
           <div class="section-header reveal">
             <div class="eyebrow">Биография</div>
-            <h2 class="h2">Поэт, <em>рождённый</em><br>голосом Чечни</h2>
+            <h2 class="h2">Жизнь <em>и творчество</em></h2>
           </div>
           <p class="bio__body reveal">
             Известный чеченский поэт и писатель <strong style="color:var(--cream)">Абдул-Хамид Арбиевич Хатуев</strong> родился в 1952 году в Киргизской ССР в годы депортации чеченского народа. С 1957 года жил на Родине, в Чечне. Представитель тайпа Гуной.
@@ -107,7 +222,7 @@
             В 1974 году окончил филологический факультет Чечено-Ингушского государственного университета, работал учителем, заведующим отделом и корреспондентом газеты «Грозненский рабочий». В 1992 году назначен директором Государственного информационного агентства «Чечен-пресс».
           </p>
           <p class="bio__body reveal">
-            Стихи, очерки, рассказы и критические статьи публиковались в литературном альманахе «Орга», в коллективных сборниках «Час рассвета», «Манящие горизонты», «Антология чеченской поэзии». В 2007 году вышла книга «Яхалахь Нохчийчоь» («Праведная моя Чечня»), в 2008-м — сборник на русском «Я веду себя на расстрел». Автор множества известных музыкальных хитов. По его сценарию в 2005 году в Баку был снят фильм «Соседи».
+            Стихи, очерки, рассказы и критические статьи публиковались в литературном альманахе «Орга», в коллективных сборниках «Час рассвета», «Манящие горизонты», «Антология чеченской поэзии». В 2007 году вышла книга «Праведная моя Чечня», в 2008-м — сборник на русском «Я веду себя на расстрел». Его стихи стали основой песен. По его сценарию в 2005 году был снят фильм «Соседи».
           </p>
           <div class="bio__badges reveal">
             <span class="badge">Народный писатель ЧР</span>
@@ -115,7 +230,7 @@
             <span class="badge">Тайп Гуной</span>
             <span class="badge">1952 — 2011</span>
           </div>
-        </div>
+</div>
 
       </div>
     </div>
@@ -134,76 +249,71 @@
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/covers/yahalah.jpg" alt="Яхалахь Нохчийчоь" class="book-card__img" loading="lazy">
+            <img src="images/covers/yahalah.webp" alt="Фотография обложки книги «Йахалахъ, Нохчийчоь»" class="book-card__img" width="1122" height="1402" loading="lazy" decoding="async">
             <div class="book-card__sheen"></div>
             <div class="book-card__action">
-              <a href="files/1.pdf" class="book-card__dl" target="_blank" download>
-                ↓ Скачать PDF
+              <a href="reader.html?book=1" class="book-card__read">
+                Читать онлайн <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
           <div class="book-card__info">
-            <div class="book-card__num">2007</div>
-            <div class="book-card__title">Яхалахь Нохчийчоь</div>
-            <div class="book-card__sub">«Живи моя Чечня»</div>
-            <span class="book-card__status book-card__status--available">PDF доступен</span>
+            <div class="book-card__num">2022</div>
+            <div class="book-card__title">Йахалахъ, Нохчийчоь</div>
+            <div class="book-card__sub">Стихи и рассказы · чеченский язык</div>
+            <span class="book-card__status book-card__status--available">Онлайн-чтение</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/covers/beriin.jpg" alt="Берийн ирс" class="book-card__img" loading="lazy">
+            <img src="images/covers/beriin.webp" alt="Фотография обложки книги «Берийн ирс»" class="book-card__img" width="1122" height="1402" loading="lazy" decoding="async">
             <div class="book-card__sheen"></div>
             <div class="book-card__action">
-              <a href="files/2.pdf" class="book-card__dl" target="_blank" download>
-                ↓ Скачать PDF
+              <a href="reader.html?book=2" class="book-card__read">
+                Читать онлайн <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
           <div class="book-card__info">
-            <div class="book-card__num">Сборник стихов</div>
+            <div class="book-card__num">2022</div>
             <div class="book-card__title">Берийн ирс</div>
-            <div class="book-card__sub">«Счастье детей»</div>
-            <span class="book-card__status book-card__status--available">PDF доступен</span>
+            <div class="book-card__sub">Стихи · чеченский язык</div>
+            <span class="book-card__status book-card__status--available">Онлайн-чтение</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/covers/arzunan.jpg" alt="Аьрзунан илли" class="book-card__img" loading="lazy">
+            <img src="images/covers/arzunan.webp" alt="Фотография обложки книги «Аьрзунан илли»" class="book-card__img" width="1122" height="1402" loading="lazy" decoding="async">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
-            <div class="book-card__num">Сборник стихов</div>
             <div class="book-card__title">Аьрзунан илли</div>
-            <div class="book-card__sub">«Песнь орла»</div>
-            <span class="book-card__status">Скоро</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/covers/rasstrel.jpg" alt="Я веду себя на расстрел" class="book-card__img" loading="lazy">
+            <img src="images/covers/rasstrel.webp" alt="Фотография обложки книги «Я веду себя на расстрел»" class="book-card__img" width="1122" height="1402" loading="lazy" decoding="async">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
             <div class="book-card__num">2008</div>
             <div class="book-card__title">Я веду себя на расстрел</div>
             <div class="book-card__sub">Стихи на русском языке</div>
-            <span class="book-card__status">Скоро</span>
           </div>
         </div>
 
         <div class="book-card">
           <div class="book-card__cover-wrap">
-            <img src="images/covers/busulba.jpg" alt="Бусулба сан Нохчийчоь" class="book-card__img" loading="lazy">
+            <img src="images/covers/busulba.webp" alt="Фотография обложки книги «Бусалба сан Нохчийчоь»" class="book-card__img" width="1122" height="1402" loading="lazy" decoding="async">
             <div class="book-card__sheen"></div>
           </div>
           <div class="book-card__info">
-            <div class="book-card__num">Сборник стихов</div>
-            <div class="book-card__title">Бусулба сан Нохчийчоь</div>
-            <div class="book-card__sub">«Праведная моя Чечня»</div>
-            <span class="book-card__status">Скоро</span>
+            <div class="book-card__num">2007</div>
+            <div class="book-card__title">Бусалба сан Нохчийчоь</div>
+            <div class="book-card__sub">Праведная моя Чечня · 174 страницы</div>
           </div>
         </div>
 
@@ -225,21 +335,7 @@
     </div>
   </section>
 
-  <!-- ═══ POEMS TEASER ═══ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header reveal">
-        <div class="eyebrow">Поэзия</div>
-        <h2 class="h2">Стихи <em>на чеченском</em></h2>
-        <p class="lead">Стихотворения, написанные на родном языке — живой голос традиции и боли эпохи.</p>
-      </div>
-      <a href="stikhi.html" class="btn btn--outline reveal" style="margin-top:1rem">
-        Читать стихи →
-      </a>
-    </div>
-  </section>
-
-  <!-- ═══ PHOTO GALLERY ═══ -->
+<!-- ═══ PHOTO GALLERY ═══ -->
   <section class="section section--alt" id="gallery">
     <div class="container">
       <div class="section-header reveal">
@@ -256,7 +352,7 @@
           <img src="images/portrait-bw.jpg" alt="Молодые годы" loading="lazy">
           <figcaption>Молодые годы</figcaption>
         </figure>
-        <figure class="gallery-item">
+        <figure class="gallery-item gallery-item--uncropped">
           <img src="images/portrait-young.jpg" alt="Ранний период" loading="lazy">
           <figcaption>Начало творческого пути</figcaption>
         </figure>
@@ -284,10 +380,10 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html">Контакты</a></li>
       </ul>
-      <p class="footer__copy">© 2025 Все права защищены</p>
-    </div>
+      <p class="footer__copy">© 2026 Все права защищены</p>
+</div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=16"></script>
 </body>
 </html>

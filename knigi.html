@@ -8,12 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=25">
   <style>
     /* Extended book cards for full books page */
     .book-full-card {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 280px minmax(0, 1fr);
       gap: 2.5rem;
       padding: 2.5rem 0;
       border-bottom: 1px solid var(--border);
@@ -21,7 +21,7 @@
     .book-full-card:last-child { border-bottom: none; }
     .book-full-card__cover {
       position: relative;
-      aspect-ratio: 2/3;
+      aspect-ratio: 1122 / 1402;
       overflow: hidden;
       background: var(--bg-card);
       flex-shrink: 0;
@@ -29,19 +29,17 @@
       box-shadow: 0 14px 36px rgba(0,0,0,0.4);
     }
     .book-full-card__img {
+      display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .book-full-card:hover .book-full-card__img {
-      transform: scale(1.03);
+      background: #0d0d0c;
     }
     .book-full-card__body { display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
     .book-full-card__year {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--gold);
     }
@@ -55,7 +53,7 @@
     .book-full-card__subtitle {
       font-size: 0.95rem;
       font-style: italic;
-      color: var(--muted);
+      color: #b4a68e;
     }
     .book-full-card__desc {
       font-size: 0.95rem;
@@ -63,14 +61,15 @@
       line-height: 1.8;
       max-width: 460px;
     }
+    .book-full-card__desc a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: .2em; }
     .book-full-card__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
     @media (max-width: 640px) {
       .book-full-card { grid-template-columns: 1fr; }
-      .book-full-card__cover { max-width: 200px; }
+      .book-full-card__cover { width: min(100%, 280px); margin-inline: auto; }
     }
   </style>
 </head>
-<body>
+<body class="page-books">
 
   <!-- ═══ NAVIGATION ═══ -->
   <nav class="nav scrolled" id="nav">
@@ -85,13 +84,13 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html">Контакты</a></li>
       </ul>
-      <button class="nav__hamburger" aria-label="Меню">
+      <button class="nav__hamburger" aria-label="Меню" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <div class="nav__drawer">
+  <div class="nav__drawer" id="nav-drawer" aria-hidden="true" inert>
     <ul>
       <li><a href="index.html">Главная</a></li>
       <li><a href="knigi.html">Книги</a></li>
@@ -102,7 +101,7 @@
 
   <!-- ═══ PAGE HERO ═══ -->
   <section class="page-hero" style="padding-top: var(--nav-h);">
-    <div class="page-hero__bg" style="background-image: url('images/edfmin1.jpg');"></div>
+    <div class="page-hero__bg" style="background-image: url('images/ushkaloy-towers.jpg'); background-position: 50% 58%;"></div>
     <div class="page-hero__overlay"></div>
     <div class="page-hero__content">
       <div class="eyebrow">Литературное наследие</div>
@@ -114,25 +113,24 @@
   <section class="section">
     <div class="container">
 
-      <p class="lead reveal" style="max-width:620px; margin-bottom:3rem;">
-        Пять книг, в которых запечатлена душа Чечни — стихи на нохчийн матте и на русском языке. Книги с доступным PDF можно скачать бесплатно.
+      <p class="lead reveal" style="max-width:620px; margin-bottom:1rem;">
+        Сборники стихов и прозы. Откройте электронное издание или познакомьтесь с книгами автора.
       </p>
 
       <!-- Book 1 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/covers/yahalah.jpg" alt="Яхалахь Нохчийчоь" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/yahalah.webp" alt="Фотография обложки книги «Йахалахъ, Нохчийчоь»" class="book-full-card__img" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
         <div class="book-full-card__body">
-          <div class="book-full-card__year">2007 · Нохчийн мотт</div>
-          <h2 class="book-full-card__title">Яхалахь Нохчийчоь</h2>
-          <div class="book-full-card__subtitle">«Праведная моя Чечня» · «Живи, Чечня!»</div>
+          <div class="book-full-card__year">2022 · Солжа-Гала · 240 страниц</div>
+          <h2 class="book-full-card__title">Йахалахъ, Нохчийчоь</h2>
+          <div class="book-full-card__subtitle">Байташ, дийцарш</div>
           <p class="book-full-card__desc">
-            Один из главных сборников поэта. Стихи, написанные на чеченском языке, — о Родине, вере, судьбе народа. Книга вышла в 2007 году и стала отражением духовного пути автора.
+            Электронная копия издания 2022 года. В выходных данных указаны АО «ИПК „Грозненский рабочий“» и объём 240 страниц.
           </p>
           <div class="book-full-card__actions">
-            <a href="files/1.pdf" class="btn btn--gold" target="_blank" download>↓ Скачать PDF</a>
-            <a href="files/1.pdf" class="btn btn--outline" target="_blank">Читать онлайн</a>
+            <a href="reader.html?book=1" class="btn btn--gold">Читать онлайн</a>
           </div>
         </div>
       </div>
@@ -140,18 +138,17 @@
       <!-- Book 2 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/covers/beriin.jpg" alt="Берийн ирс" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/beriin.webp" alt="Берийн ирс" class="book-full-card__img" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
         <div class="book-full-card__body">
-          <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>
+          <div class="book-full-card__year">2022 · Солжа-Гала · 176 страниц</div>
           <h2 class="book-full-card__title">Берийн ирс</h2>
-          <div class="book-full-card__subtitle">«Судьба детей» · «Детское счастье»</div>
+          <div class="book-full-card__subtitle">Чеченский язык</div>
           <p class="book-full-card__desc">
-            Сборник стихов о детях Чечни, их судьбах и надеждах. Автор пишет с теплом и болью — для тех, кто вырастал в тени войны и должен был найти в себе силы жить.
+            Электронная копия издания 2022 года. В выходных данных указан объём 176 страниц.
           </p>
           <div class="book-full-card__actions">
-            <a href="files/2.pdf" class="btn btn--gold" target="_blank" download>↓ Скачать PDF</a>
-            <a href="files/2.pdf" class="btn btn--outline" target="_blank">Читать онлайн</a>
+            <a href="reader.html?book=2" class="btn btn--gold">Читать онлайн</a>
           </div>
         </div>
       </div>
@@ -159,54 +156,43 @@
       <!-- Book 3 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/covers/arzunan.jpg" alt="Аьрзунан илли" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/arzunan.webp" alt="Аьрзунан илли" class="book-full-card__img" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
         <div class="book-full-card__body">
-          <div class="book-full-card__year">Нохчийн мотт · Поэма</div>
           <h2 class="book-full-card__title">Аьрзунан илли</h2>
-          <div class="book-full-card__subtitle">«Песнь орла»</div>
-          <p class="book-full-card__desc">
-            Поэма о чести, достоинстве и силе духа горского человека. Образ орла — древний символ свободы и гордости чеченского народа — проходит через всё произведение.
-          </p>
-          <div class="book-full-card__actions">
-            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
-          </div>
+
         </div>
       </div>
 
       <!-- Book 4 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/covers/rasstrel.jpg" alt="Я веду себя на расстрел" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/rasstrel.webp" alt="Я веду себя на расстрел" class="book-full-card__img" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
         <div class="book-full-card__body">
           <div class="book-full-card__year">2008 · Русский язык</div>
           <h2 class="book-full-card__title">Я веду себя на расстрел</h2>
           <div class="book-full-card__subtitle">Стихи на русском языке</div>
           <p class="book-full-card__desc">
-            Единственный сборник на русском языке. Вышел в 2008 году. Стихи раскрывают внутренний мир поэта: его переживания, судьбу народа, трагедию эпохи — языком, понятным всем.
+            Сборник стихов на русском языке.
           </p>
-          <div class="book-full-card__actions">
-            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
-          </div>
+
         </div>
       </div>
 
       <!-- Book 5 -->
       <div class="book-full-card reveal">
         <div class="book-full-card__cover">
-          <img src="images/covers/busulba.jpg" alt="Бусулба сан Нохчийчоь" class="book-full-card__img" loading="lazy">
+          <img src="images/covers/busulba.webp" alt="Бусалба сан Нохчийчоь" class="book-full-card__img" width="1122" height="1402" loading="lazy" decoding="async">
         </div>
         <div class="book-full-card__body">
-          <div class="book-full-card__year">Нохчийн мотт · Сборник стихов</div>
-          <h2 class="book-full-card__title">Бусулба сан Нохчийчоь</h2>
-          <div class="book-full-card__subtitle">«Моя мусульманская Чечня»</div>
+          <div class="book-full-card__year">2007 · Грозный · 174 страницы</div>
+          <h2 class="book-full-card__title">Бусалба сан Нохчийчоь</h2>
+          <div class="book-full-card__subtitle">Праведная моя Чечня</div>
           <p class="book-full-card__desc">
-            Сборник, в котором вера и Родина неотделимы. Автор воспевает мусульманскую Чечню с её традициями, кодексом чести «Нохчалла» и вечной духовной силой народа.
+            Сборник стихов на чеченском языке.
           </p>
-          <div class="book-full-card__actions">
-            <span class="book-card__status" style="align-self:center;">PDF скоро будет добавлен</span>
-          </div>
+
         </div>
       </div>
 
@@ -223,10 +209,10 @@
         <li><a href="stikhi.html">Стихи</a></li>
         <li><a href="kontakty.html">Контакты</a></li>
       </ul>
-      <p class="footer__copy">© 2025 Все права защищены</p>
-    </div>
+      <p class="footer__copy">© 2026 Все права защищены</p>
+</div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=15"></script>
 </body>
 </html>
