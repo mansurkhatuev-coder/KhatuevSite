@@ -1558,12 +1558,6 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   opacity: var(--ornament-opacity);
   transform-origin: left center;
 }
-.section-header--song::after {
-  width: min(12.5rem, 48vw);
-  aspect-ratio: 10 / 1;
-  background-image: url('../images/ornaments/chechen-woven-divider.webp?v=1');
-  --ornament-opacity: .9;
-}
 .section-header.reveal::after,
 .poems-lang-header.reveal::after {
   clip-path: inset(0 100% 0 0);
@@ -1596,15 +1590,16 @@ body.has-voice-player { padding-bottom: 6.5rem; }
 }
 .page-hero__content { z-index: 1; }
 .hero-ornament {
-  --ornament-opacity: .5;
-  top: calc(var(--nav-total-h) + 1rem);
+  --ornament-opacity: .82;
+  top: 50%;
   bottom: auto;
-  left: clamp(.35rem, .8vw, .7rem);
-  width: clamp(3.6rem, 4.2vw, 4.6rem);
-  height: calc(100% - var(--nav-total-h) - 2.5rem);
-  object-fit: fill;
+  left: clamp(1rem, 2.5vw, 2.5rem);
+  width: clamp(1.7rem, 2.8vw, 2.3rem);
+  height: auto;
+  object-fit: contain;
   opacity: var(--ornament-opacity);
-  filter: drop-shadow(0 1px 10px rgba(0,0,0,.2));
+  filter: grayscale(1) sepia(1) saturate(1.4) brightness(.85) drop-shadow(0 1px 10px rgba(0,0,0,.2));
+  transform: translateY(-50%);
   animation: chechen-ornament-arrive 1.25s var(--ease) .32s both;
 }
 .hero__content {
@@ -1613,12 +1608,12 @@ body.has-voice-player { padding-bottom: 6.5rem; }
 }
 @media (min-width: 641px) and (max-width: 900px) {
   .hero-ornament {
-    left: .35rem;
-    width: 3.6rem;
+    left: clamp(.75rem, 2vw, 1.25rem);
+    width: clamp(1.4rem, 3vw, 1.8rem);
   }
   .hero__content {
     max-width: none;
-    padding-left: clamp(6.75rem, 12vw, 7.5rem);
+    padding-left: clamp(5.25rem, 12vw, 7.5rem);
     padding-right: clamp(1.25rem, 4vw, 2rem);
   }
 }
@@ -1631,6 +1626,14 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   to { opacity: var(--ornament-opacity, .66); }
 }
 @media (max-width: 640px) {
+  .hero-ornament {
+    display: block;
+    --ornament-opacity: .78;
+    top: calc(var(--nav-total-h) + 1.5rem);
+    left: .25rem;
+    width: clamp(1rem, 5vw, 1.2rem);
+    transform: none;
+  }
   .page-hero::after { right: -2.75rem; width: 12rem; --ornament-opacity: .11; }
 }
 .poems-lang-header {

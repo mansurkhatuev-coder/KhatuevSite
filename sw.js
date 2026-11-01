@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "khatuev-pwa-";
-const CACHE_VERSION = "v9";
+const CACHE_VERSION = "v12";
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `${CACHE_PREFIX}assets-${CACHE_VERSION}`;
 const SCOPE_URL = new URL(self.registration.scope);
@@ -13,7 +13,7 @@ const CORE_ASSETS = [
   "reader.html",
   "offline.html",
   "manifest.webmanifest",
-  "css/style.css?v=35",
+  "css/style-v37.css",
   "css/reader.css?v=5",
   "css/poems-reading.css?v=1",
   "css/poem-export.css?v=1",
@@ -47,7 +47,7 @@ const CORE_ASSETS = [
   "images/ornaments/chechen-rosette.svg?v=2",
   "images/ornaments/chechen-scroll-divider.svg?v=2",
   "images/ornaments/chechen-vertical-border.svg?v=2",
-  "images/ornaments/chechen-woven-divider.webp?v=1",
+  "images/ornaments/chechen-woven-border.webp?v=1",
   "images/poem-backgrounds/ushkaloy-dawn.webp",
   "images/poem-backgrounds/mountain-sunset.webp",
   "images/poem-backgrounds/rainy-mountains.webp",
