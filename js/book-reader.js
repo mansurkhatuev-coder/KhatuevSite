@@ -5,6 +5,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdfjs/pdf.worker.min.
 const BOOKS = {
   '1': { title: 'Йахалахъ, Нохчийчоь', src: 'files/1.pdf' },
   '2': { title: 'Берийн ирс', src: 'files/2.pdf' },
+  '3': { title: 'Хьуна – хьекъал, суна – хьекъал!', src: 'files/mudrost-tebe-mudrost-mne-2026.pdf' },
+  '4': { title: 'Я веду себя на расстрел', src: 'files/ya-vedu-sebya-na-rasstrel-2008.pdf' },
 };
 
 const params = new URLSearchParams(window.location.search);
