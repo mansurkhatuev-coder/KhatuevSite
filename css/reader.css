@@ -4,7 +4,7 @@
 
 .reader-page {
   min-height: calc(100vh - 12rem);
-  padding: calc(var(--nav-h) + clamp(2.5rem, 6vw, 5rem)) var(--px) clamp(4rem, 8vw, 7rem);
+  padding: calc(var(--nav-total-h) + clamp(2.5rem, 6vw, 5rem)) var(--px) clamp(4rem, 8vw, 7rem);
   background:
     radial-gradient(ellipse at 14% 12%, rgba(200, 168, 120, 0.1), transparent 32rem),
     linear-gradient(180deg, #0b0b0e 0%, var(--bg) 72%);
