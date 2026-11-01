@@ -1599,7 +1599,7 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   object-fit: contain;
   opacity: var(--ornament-opacity);
   filter: grayscale(1) sepia(1) saturate(1.4) brightness(.85) drop-shadow(0 1px 10px rgba(0,0,0,.2));
-  transform: translateY(-50%);
+  transform: translateY(-50%) scaleY(1.08);
   animation: chechen-ornament-arrive 1.25s var(--ease) .32s both;
 }
 .hero__content {
@@ -1632,7 +1632,8 @@ body.has-voice-player { padding-bottom: 6.5rem; }
     top: calc(var(--nav-total-h) + 1.5rem);
     left: .25rem;
     width: clamp(1rem, 5vw, 1.2rem);
-    transform: none;
+    transform: scaleY(1.16);
+    transform-origin: top center;
   }
   .page-hero::after { right: -2.75rem; width: 12rem; --ornament-opacity: .11; }
 }
