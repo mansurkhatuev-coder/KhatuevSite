@@ -1409,7 +1409,8 @@ body::before {
 .voice-track__info h3, .voice-interview__copy h3 { margin: 0; color: var(--cream); font-family: var(--ff-display); font-size: clamp(1.25rem, 1.8vw, 1.65rem); font-weight: 400; line-height: 1.2; }
 .voice-track__info p, .voice-interview__copy p { margin: .3rem 0 0; color: var(--muted); font-size: .84rem; }
 .voice-play { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-width: 108px; min-height: 44px; padding: .55rem .8rem; border: 1px solid var(--gold-dim); border-radius: 999px; background: transparent; color: var(--cream); font: inherit; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: background-color .22s ease, color .22s ease, border-color .22s ease, transform .22s ease; }
-.voice-play__icon { color: var(--gold-bright); font-size: .75rem; }
+.voice-play__icon { display: inline-grid; width: 1rem; height: 1rem; flex: 0 0 1rem; place-items: center; color: var(--gold-bright); }
+.voice-play__svg { display: block; width: 1rem; height: 1rem; fill: currentColor; }
 .voice-play:hover, .voice-play.is-playing { border-color: var(--gold); background: var(--gold); color: #17140f; }
 .voice-play:hover .voice-play__icon, .voice-play.is-playing .voice-play__icon { color: currentColor; }
 .voice-play:focus-visible, .voice-player__close:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }

@@ -507,7 +507,10 @@
         const label = button.querySelector('.voice-play__label');
         const icon = button.querySelector('.voice-play__icon');
         if (label) label.textContent = playing ? 'Пауза' : selected ? 'Продолжить' : 'Слушать';
-        if (icon) icon.textContent = playing ? 'Ⅱ' : '▶';
+        const iconShape = icon?.querySelector('path');
+        if (iconShape) {
+          iconShape.setAttribute('d', playing ? 'M7 5h3v14H7zM14 5h3v14h-3z' : 'M8 5v14l11-7z');
+        }
         button.classList.toggle('is-current', selected);
         button.classList.toggle('is-playing', playing);
         button.setAttribute('aria-pressed', String(playing));
