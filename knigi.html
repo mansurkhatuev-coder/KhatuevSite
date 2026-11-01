@@ -2,7 +2,19 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    (() => {
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+        || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      const isStandalone = navigator.standalone === true
+        || window.matchMedia('(display-mode: standalone)').matches;
+      document.querySelector('meta[name="viewport"]').setAttribute(
+        'content',
+        `width=device-width, initial-scale=1.0, viewport-fit=${isIOS && !isStandalone ? 'contain' : 'cover'}`
+      );
+    })();
+  </script>
   <meta name="theme-color" content="#07070A">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Хатуев">
