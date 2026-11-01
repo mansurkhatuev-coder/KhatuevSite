@@ -27,4 +27,12 @@ c = C()
 c.feed(html)
 print('remaining', [(t, l, cl) for t, l, cl in c.stack if 'poem' in cl or cl == 'container'])
 print('search input', 'poems-search' in html)
-print('poem count', len(re.findall(r'class="poem-block"', html)))
+ids = re.findall(r'class="poem-block reveal" id="(poem-\d+)"', html)
+numbers = [int(value.rsplit("-", 1)[1]) for value in ids]
+legacy_numbers = [number for number in numbers if number <= 82]
+assert len(numbers) >= 82
+assert len(set(ids)) == len(ids), 'duplicate poem ids'
+assert legacy_numbers == list(range(1, 83)), 'legacy poem links changed'
+assert sorted(numbers) == list(range(1, len(numbers) + 1)), 'poem ids are not continuous'
+assert not any('poem' in cl or cl == 'container' for _, _, cl in c.stack), 'unclosed structure'
+print('poem count', len(ids), '; old links preserved')

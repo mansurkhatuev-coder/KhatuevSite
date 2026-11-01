@@ -13,18 +13,35 @@ const title = document.getElementById('reader-title');
 const meta = document.getElementById('reader-meta');
 const status = document.getElementById('reader-status');
 const toolbar = document.getElementById('reader-toolbar');
+const bottomToolbar = document.getElementById('reader-toolbar-bottom');
 const frame = document.getElementById('reader-page-frame');
 const canvas = document.getElementById('reader-canvas');
 const context = canvas.getContext('2d', { alpha: false });
 const errorPanel = document.getElementById('reader-error');
 const errorMessage = document.getElementById('reader-error-message');
-const pageNumber = document.getElementById('reader-page-number');
-const pageCount = document.getElementById('reader-page-count');
-const previousButton = document.getElementById('reader-prev');
-const nextButton = document.getElementById('reader-next');
+const pageNumbers = [
+  document.getElementById('reader-page-number'),
+  document.getElementById('reader-page-number-bottom'),
+];
+const pageCounts = [
+  document.getElementById('reader-page-count'),
+  document.getElementById('reader-page-count-bottom'),
+];
+const previousButtons = [
+  document.getElementById('reader-prev'),
+  document.getElementById('reader-prev-bottom'),
+];
+const nextButtons = [
+  document.getElementById('reader-next'),
+  document.getElementById('reader-next-bottom'),
+];
 const zoomOutButton = document.getElementById('reader-zoom-out');
 const zoomInButton = document.getElementById('reader-zoom-in');
 const fitButton = document.getElementById('reader-fit');
+const swipeNote = document.getElementById('reader-swipe-note');
+const supportsPointerSwipe = typeof window.PointerEvent === 'function'
+  && (navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches);
+const supportsTouchSwipe = supportsPointerSwipe || (!window.PointerEvent && 'ontouchstart' in window);
 
 let pdfDocument = null;
 let renderTask = null;
@@ -32,23 +49,50 @@ let currentPage = 1;
 let zoom = 1;
 let resizeTimer = 0;
 let renderGeneration = 0;
+let swipeStart = null;
 
 function showError(message) {
   status.hidden = true;
   toolbar.hidden = true;
+  bottomToolbar.hidden = true;
   frame.hidden = true;
+  frame.classList.remove('reader-page-frame--swipe-enabled');
+  swipeNote.hidden = true;
   errorMessage.textContent = message;
   errorPanel.hidden = false;
 }
 
 function syncControls() {
-  previousButton.disabled = currentPage <= 1;
-  nextButton.disabled = currentPage >= pdfDocument.numPages;
-  pageNumber.value = String(currentPage);
-  pageNumber.max = String(pdfDocument.numPages);
+  previousButtons.forEach(button => { button.disabled = currentPage <= 1; });
+  nextButtons.forEach(button => { button.disabled = currentPage >= pdfDocument.numPages; });
+  pageNumbers.forEach(input => {
+    input.value = String(currentPage);
+    input.max = String(pdfDocument.numPages);
+  });
+  pageCounts.forEach(count => { count.textContent = String(pdfDocument.numPages); });
   zoomOutButton.disabled = zoom <= 0.6;
   zoomInButton.disabled = zoom >= 2.5;
   fitButton.disabled = zoom === 1;
+}
+
+function syncSwipeMode() {
+  const swipeEnabled = supportsTouchSwipe && zoom === 1;
+  frame.classList.toggle('reader-page-frame--swipe-enabled', swipeEnabled);
+  swipeNote.hidden = !supportsTouchSwipe;
+}
+
+function getSwipeStart(x, y) {
+  if (!supportsTouchSwipe || zoom !== 1 || x < 40 || x > window.innerWidth - 40) return null;
+  return { x, y };
+}
+
+function navigateBySwipe(start, x, y) {
+  if (!start) return;
+  const deltaX = x - start.x;
+  const deltaY = y - start.y;
+  if (Math.abs(deltaX) < 56 || Math.abs(deltaX) < Math.abs(deltaY) * 1.25) return;
+  const requestedPage = currentPage + (deltaX < 0 ? 1 : -1);
+  if (requestedPage >= 1 && requestedPage <= pdfDocument.numPages) renderPage(requestedPage);
 }
 
 async function renderPage(requestedPage = currentPage) {
@@ -106,22 +150,56 @@ async function renderPage(requestedPage = currentPage) {
 
 function setZoom(nextZoom) {
   zoom = Math.max(0.6, Math.min(2.5, Math.round(nextZoom * 10) / 10));
+  syncSwipeMode();
   renderPage(currentPage);
 }
 
-previousButton.addEventListener('click', () => renderPage(currentPage - 1));
-nextButton.addEventListener('click', () => renderPage(currentPage + 1));
-pageNumber.addEventListener('change', () => renderPage(pageNumber.value));
-pageNumber.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    renderPage(pageNumber.value);
-    pageNumber.blur();
-  }
+previousButtons.forEach(button => button.addEventListener('click', () => renderPage(currentPage - 1)));
+nextButtons.forEach(button => button.addEventListener('click', () => renderPage(currentPage + 1)));
+pageNumbers.forEach(input => {
+  input.addEventListener('change', () => renderPage(input.value));
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      renderPage(input.value);
+      input.blur();
+    }
+  });
 });
 zoomOutButton.addEventListener('click', () => setZoom(zoom - 0.1));
 zoomInButton.addEventListener('click', () => setZoom(zoom + 0.1));
 fitButton.addEventListener('click', () => setZoom(1));
+
+if (supportsPointerSwipe) {
+  frame.addEventListener('pointerdown', event => {
+    if (event.pointerType !== 'touch') return;
+    if (event.isPrimary === false) {
+      swipeStart = null;
+      return;
+    }
+    swipeStart = getSwipeStart(event.clientX, event.clientY);
+  }, { passive: true });
+  frame.addEventListener('pointerup', event => {
+    navigateBySwipe(swipeStart, event.clientX, event.clientY);
+    swipeStart = null;
+  }, { passive: true });
+  frame.addEventListener('pointercancel', () => { swipeStart = null; }, { passive: true });
+} else if (supportsTouchSwipe) {
+  frame.addEventListener('touchstart', event => {
+    if (event.touches.length > 1) {
+      swipeStart = null;
+      return;
+    }
+    const touch = event.changedTouches[0];
+    swipeStart = getSwipeStart(touch.clientX, touch.clientY);
+  }, { passive: true });
+  frame.addEventListener('touchend', event => {
+    const touch = event.changedTouches[0];
+    navigateBySwipe(swipeStart, touch.clientX, touch.clientY);
+    swipeStart = null;
+  }, { passive: true });
+  frame.addEventListener('touchcancel', () => { swipeStart = null; }, { passive: true });
+}
 
 window.addEventListener('resize', () => {
   window.clearTimeout(resizeTimer);
@@ -139,12 +217,13 @@ if (!selectedBook) {
   pdfjsLib.getDocument({ url: selectedBook.src }).promise
     .then(async pdf => {
       pdfDocument = pdf;
-      pageCount.textContent = String(pdf.numPages);
-      pageNumber.disabled = false;
+      pageNumbers.forEach(input => { input.disabled = false; });
       toolbar.hidden = false;
+      bottomToolbar.hidden = false;
       frame.hidden = false;
       meta.textContent = `Читать онлайн · ${pdf.numPages} страниц`;
       syncControls();
+      syncSwipeMode();
       await renderPage(1);
     })
     .catch(() => showError('Не удалось загрузить книгу. Проверьте соединение и попробуйте открыть её ещё раз.'));

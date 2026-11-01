@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=25">
-  <link rel="stylesheet" href="css/reader.css?v=1">
+  <link rel="stylesheet" href="css/reader.css?v=2">
 </head>
 <body class="page-reader">
   <nav class="nav scrolled" id="nav">
@@ -51,13 +51,13 @@
       <section class="reader-card" aria-label="Просмотр книги">
         <div class="reader-toolbar" id="reader-toolbar" aria-label="Управление страницами" hidden>
           <div class="reader-toolbar__pages">
-            <button class="reader-control" id="reader-prev" type="button" aria-label="Предыдущая страница" title="Предыдущая страница" disabled>
+            <button class="reader-control" id="reader-prev" type="button" aria-label="Предыдущая страница" title="Предыдущая страница" aria-controls="reader-canvas" disabled>
               <span aria-hidden="true">←</span>
             </button>
             <label class="reader-page-label" for="reader-page-number">Страница</label>
-            <input class="reader-page-number" id="reader-page-number" type="number" min="1" value="1" inputmode="numeric" aria-label="Номер страницы" disabled>
+            <input class="reader-page-number" id="reader-page-number" type="number" min="1" value="1" inputmode="numeric" aria-label="Номер страницы" aria-controls="reader-canvas" disabled>
             <span class="reader-page-total">из <span id="reader-page-count">—</span></span>
-            <button class="reader-control" id="reader-next" type="button" aria-label="Следующая страница" title="Следующая страница" disabled>
+            <button class="reader-control" id="reader-next" type="button" aria-label="Следующая страница" title="Следующая страница" aria-controls="reader-canvas" disabled>
               <span aria-hidden="true">→</span>
             </button>
           </div>
@@ -77,8 +77,21 @@
         <div class="reader-page-frame" id="reader-page-frame" hidden>
           <canvas id="reader-canvas" aria-label="Страница книги"></canvas>
         </div>
+        <div class="reader-toolbar reader-toolbar--bottom" id="reader-toolbar-bottom" aria-label="Навигация внизу книги" hidden>
+          <div class="reader-toolbar__pages">
+            <button class="reader-control" id="reader-prev-bottom" type="button" aria-label="Предыдущая страница" title="Предыдущая страница" aria-controls="reader-canvas" disabled>
+              <span aria-hidden="true">←</span>
+            </button>
+            <label class="reader-page-label" for="reader-page-number-bottom">Страница</label>
+            <input class="reader-page-number" id="reader-page-number-bottom" type="number" min="1" value="1" inputmode="numeric" aria-label="Номер страницы внизу книги" aria-controls="reader-canvas" disabled>
+            <span class="reader-page-total">из <span id="reader-page-count-bottom">—</span></span>
+            <button class="reader-control" id="reader-next-bottom" type="button" aria-label="Следующая страница" title="Следующая страница" aria-controls="reader-canvas" disabled>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </div>
       </section>
-      <p class="reader-note">Страницы книги открываются прямо на сайте.</p>
+      <p class="reader-note">Страницы книги открываются прямо на сайте. <span id="reader-swipe-note" hidden>На сенсорном экране листайте их влево или вправо в режиме «По ширине».</span></p>
     </div>
   </main>
 
@@ -97,6 +110,6 @@
 
   <script src="js/main.js?v=15"></script>
   <!-- PDF.js 6.4.299, vendored under the Apache-2.0 license. -->
-  <script type="module" src="js/book-reader.js?v=1"></script>
+  <script type="module" src="js/book-reader.js?v=2"></script>
 </body>
 </html>

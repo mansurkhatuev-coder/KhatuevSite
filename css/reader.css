@@ -75,6 +75,13 @@
   background: rgba(12, 12, 16, 0.96);
 }
 
+.reader-toolbar--bottom {
+  justify-content: center;
+  min-height: 4rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 0;
+}
+
 .reader-toolbar[hidden],
 .reader-page-frame[hidden],
 .reader-error[hidden] {
@@ -170,6 +177,10 @@
     #292827;
 }
 
+.reader-page-frame--swipe-enabled {
+  touch-action: pan-y;
+}
+
 #reader-canvas {
   display: block;
   height: auto;
@@ -210,6 +221,11 @@
     flex-direction: column;
     gap: 0.65rem;
     padding: 0.7rem;
+  }
+
+  .reader-toolbar--bottom {
+    align-items: center;
+    flex-direction: row;
   }
 
   .reader-toolbar__pages,
