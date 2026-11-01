@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "khatuev-pwa-";
-const CACHE_VERSION = "v5";
+const CACHE_VERSION = "v6";
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `${CACHE_PREFIX}assets-${CACHE_VERSION}`;
 const SCOPE_URL = new URL(self.registration.scope);
@@ -17,7 +17,7 @@ const CORE_ASSETS = [
   "css/reader.css?v=4",
   "css/poems-reading.css?v=1",
   "css/voice-player.css?v=1",
-  "js/main.js?v=19",
+  "js/main.js?v=20",
   "js/pwa.js?v=1",
   "js/book-reader.js?v=2",
   "js/vendor/pdfjs/pdf.min.mjs",

@@ -10,14 +10,13 @@
   const isIOSDevice = /iPhone|iPad|iPod/.test(userAgent)
     || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const iosVersionMatch = userAgent.match(/(?:CPU (?:iPhone )?OS|iPhone OS) (\d+)[_.]/);
-  const iosMajorVersion = iosVersionMatch
-    ? Number(iosVersionMatch[1])
-    : (isIOSDevice ? Number(userAgent.match(/Version\/(\d+)/)?.[1]) : 0);
+  const browserVersionMatch = userAgent.match(/Version\/(\d+)/);
+  const detectedMajorVersion = Number(browserVersionMatch?.[1] || iosVersionMatch?.[1] || 0);
   const isStandalone = navigator.standalone === true
     || window.matchMedia('(display-mode: standalone)').matches;
   let pageScroller = null;
 
-  if (isIOSDevice && iosMajorVersion === 26 && !isStandalone) {
+  if (isIOSDevice && detectedMajorVersion === 26 && !isStandalone) {
     pageScroller = document.createElement('div');
     pageScroller.className = 'ios26-page-scroll';
 
