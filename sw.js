@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "khatuev-pwa-";
-const CACHE_VERSION = "v7";
+const CACHE_VERSION = "v8";
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `${CACHE_PREFIX}assets-${CACHE_VERSION}`;
 const SCOPE_URL = new URL(self.registration.scope);
@@ -13,7 +13,7 @@ const CORE_ASSETS = [
   "reader.html",
   "offline.html",
   "manifest.webmanifest",
-  "css/style.css?v=33",
+  "css/style.css?v=34",
   "css/reader.css?v=4",
   "css/poems-reading.css?v=1",
   "css/voice-player.css?v=1",

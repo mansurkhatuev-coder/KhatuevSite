@@ -1416,7 +1416,7 @@ body::before {
 .selected-poems .eyebrow { color: #6f5433; }
 .selected-poems__all { flex-shrink: 0; color: #59462e; text-decoration: underline; text-underline-offset: .25em; padding-block: .75rem; }
 .selected-poems__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
-.selected-poem { display: flex; flex-direction: column; padding: 1.75rem 0; border-top: 1px solid #b6a68a; color: #29271f; }
+.selected-poem { display: flex; flex-direction: column; padding: 1.75rem 1.25rem; border-top: 1px solid #b6a68a; color: #29271f; }
 .selected-poem__language { color: #66523c; font-size: .9rem; margin-bottom: 1rem; }
 .selected-poem h3 { font-family: var(--ff-display); font-size: clamp(1.65rem, 2.6vw, 2.1rem); font-weight: 500; line-height: 1.15; margin-bottom: 1.25rem; }
 .selected-poem p { font-family: var(--ff-display); font-size: 1.2rem; line-height: 1.7; margin-bottom: 2rem; }
@@ -1428,7 +1428,6 @@ body::before {
   .selected-poems__grid { grid-template-columns: 1fr; gap: 0; }
   .selected-poems__heading { display: block; margin-bottom: 1.5rem; }
   .selected-poems__all { display: inline-block; margin-top: 1rem; }
-  .selected-poem { padding-inline: 1.25rem; }
   .selected-poem p { margin-bottom: 1.25rem; }
   .page-contacts .page-hero { min-height: 210px; padding-bottom: 1.5rem; }
 }
