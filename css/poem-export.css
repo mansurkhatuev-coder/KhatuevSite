@@ -1,0 +1,654 @@
+.page-poems .poem-share-trigger {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin: .25rem auto .8rem;
+  padding: .55rem .9rem;
+  border: 1px solid rgba(154, 116, 58, .72);
+  border-radius: 2px;
+  background: rgba(255, 251, 241, .72);
+  color: #4e3c28;
+  font: 600 .78rem/1.2 system-ui, sans-serif;
+  letter-spacing: .035em;
+  cursor: pointer;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+.page-poems .poem-share-trigger:hover {
+  border-color: #8e682f;
+  background: rgba(255, 251, 241, .96);
+  color: #302313;
+  transform: translateY(-1px);
+}
+
+.page-poems .poem-share-trigger:focus-visible {
+  outline: 3px solid rgba(168, 127, 65, .58);
+  outline-offset: 3px;
+}
+
+.page-poems .poem-block.is-dark .poem-share-trigger {
+  border-color: rgba(207, 172, 111, .58);
+  background: rgba(37, 34, 29, .78);
+  color: #f1e8d8;
+}
+
+.page-poems .poem-block.is-dark .poem-share-trigger:hover {
+  border-color: #d0ad72;
+  background: #332e25;
+  color: #fff8e9;
+}
+
+.poem-export {
+  width: min(1160px, calc(100vw - 36px));
+  max-width: none;
+  max-height: min(94dvh, 980px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(181, 149, 97, .55);
+  border-radius: 8px;
+  background: #f3eee4;
+  color: #29251f;
+  box-shadow: 0 28px 100px rgba(9, 8, 6, .48);
+  font-family: var(--ff-body, system-ui, sans-serif);
+}
+
+.poem-export::backdrop {
+  background: rgba(12, 12, 11, .72);
+  backdrop-filter: blur(4px);
+}
+
+.poem-export[open] {
+  animation: poem-export-enter .18s ease-out both;
+}
+
+@keyframes poem-export-enter {
+  from { opacity: 0; transform: translateY(9px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.poem-export__shell {
+  display: flex;
+  max-height: inherit;
+  flex-direction: column;
+}
+
+.poem-export__header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.45rem .95rem;
+  border-bottom: 1px solid rgba(123, 99, 63, .19);
+  background: linear-gradient(110deg, rgba(255, 253, 247, .96), rgba(238, 229, 211, .88));
+}
+
+.poem-export__heading-group { min-width: 0; }
+
+.poem-export__title {
+  margin: 0;
+  color: #312b22;
+  font-family: var(--ff-display, Georgia, serif);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 500;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+
+.poem-export__poem-meta {
+  margin: .3rem 0 0;
+  color: #75664f;
+  font-size: .78rem;
+  line-height: 1.4;
+}
+
+.poem-export__close,
+.poem-export__nav-button,
+.poem-export__choice,
+.poem-export__action,
+.poem-export__background,
+.poem-export__thumbnail {
+  min-height: 44px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.poem-export__close {
+  flex: 0 0 auto;
+  min-width: 44px;
+  padding: .45rem .7rem;
+  border: 1px solid rgba(116, 92, 57, .34);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .55);
+  color: #55452f;
+  font-size: .78rem;
+}
+
+.poem-export__layout {
+  display: grid;
+  min-height: 0;
+  flex: 1 1 auto;
+  grid-template-columns: minmax(290px, .88fr) minmax(320px, 1.12fr);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.poem-export__controls {
+  min-width: 0;
+  padding: 1.1rem 1.25rem 1.5rem;
+  border-right: 1px solid rgba(123, 99, 63, .16);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.poem-export__group {
+  margin: 0 0 1.05rem;
+  padding: 0;
+  border: 0;
+}
+
+.poem-export__group-title {
+  margin: 0 0 .48rem;
+  color: #5d4a30;
+  font: 600 .73rem/1.3 system-ui, sans-serif;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.poem-export__button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.poem-export__choice {
+  flex: 1 1 9rem;
+  padding: .55rem .72rem;
+  border: 1px solid rgba(113, 89, 54, .3);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .54);
+  color: #493d2b;
+  font-size: .8rem;
+  transition: border-color .16s ease, color .16s ease, background-color .16s ease;
+}
+
+.poem-export__choice[aria-pressed="true"] {
+  border-color: #8d6c37;
+  background: #e7dcc6;
+  color: #382a19;
+  box-shadow: inset 0 0 0 1px rgba(143, 107, 53, .16);
+}
+
+.poem-export__choice:hover,
+.poem-export__close:hover,
+.poem-export__nav-button:hover:not(:disabled) {
+  border-color: #9b763e;
+}
+
+.poem-export__backgrounds {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .48rem;
+}
+
+.poem-export__background {
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid rgba(113, 89, 54, .26);
+  border-radius: 3px;
+  background: #e4dac8;
+  color: #433a2e;
+  text-align: left;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+
+.poem-export__background[aria-pressed="true"] {
+  border-color: #936f36;
+  box-shadow: 0 0 0 2px rgba(147, 111, 54, .26);
+}
+
+.poem-export__background-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.5 / 1;
+  object-fit: cover;
+  background: #c7b99e;
+}
+
+.poem-export__background-caption {
+  display: block;
+  min-height: 2.15rem;
+  padding: .3rem .35rem;
+  font-size: .65rem;
+  line-height: 1.2;
+}
+
+.poem-export__adjustments {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .7rem;
+}
+
+.poem-export__adjustments .poem-export__group-title {
+  grid-column: 1 / -1;
+}
+
+.poem-export__range-control { min-width: 0; }
+
+.poem-export__range-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .35rem;
+  margin-bottom: .28rem;
+}
+
+.poem-export__range-label {
+  color: #514632;
+  font-size: .73rem;
+  line-height: 1.25;
+}
+
+.poem-export__range-value {
+  flex: 0 0 auto;
+  color: #735b35;
+  font: 600 .72rem/1.2 system-ui, sans-serif;
+}
+
+.poem-export__range {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  margin: 0;
+  accent-color: #8c6a37;
+  cursor: pointer;
+}
+
+.poem-export__excerpt-sections {
+  display: grid;
+  gap: .38rem;
+  margin-top: .65rem;
+}
+
+.poem-export__excerpt-sections[hidden],
+.poem-export__hint[hidden],
+.poem-export__progress[hidden],
+.poem-export__actions [hidden] {
+  display: none !important;
+}
+
+.poem-export__excerpt-label,
+.poem-export__hint {
+  margin: .4rem 0 .25rem;
+  color: #70634e;
+  font-size: .76rem;
+  line-height: 1.45;
+}
+
+.poem-export__stanza-choice {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: .65rem;
+  padding: .4rem .55rem;
+  border: 1px solid rgba(113, 89, 54, .2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .42);
+  cursor: pointer;
+}
+
+.poem-export__stanza-choice input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: #856332;
+}
+
+.poem-export__stanza-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #4a4132;
+  font-size: .74rem;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.poem-export__preview-column {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem 1.15rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(181, 149, 97, .12), transparent 48%),
+    #e9e3d8;
+}
+
+.poem-export__preview-frame {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.poem-export__canvas {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(66vh, 760px);
+  border: 1px solid rgba(80, 68, 48, .26);
+  background: #d4c8b3;
+  box-shadow: 0 14px 36px rgba(24, 21, 16, .2);
+}
+
+.poem-export__frame-navigation {
+  display: flex;
+  width: min(100%, 560px);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: .55rem;
+  margin-top: .75rem;
+}
+
+.poem-export__nav-button {
+  min-width: 5.9rem;
+  padding: .45rem .55rem;
+  border: 1px solid rgba(113, 89, 54, .28);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .56);
+  color: #55472f;
+  font-size: .72rem;
+}
+
+.poem-export__nav-button:disabled,
+.poem-export__action:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.poem-export__frame-counter {
+  margin: 0;
+  color: #62543f;
+  font-size: .76rem;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.poem-export__thumbnails {
+  display: flex;
+  width: min(100%, 560px);
+  min-height: 0;
+  flex: 0 0 auto;
+  gap: .45rem;
+  margin-top: .65rem;
+  padding: .15rem .05rem .35rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+}
+
+.poem-export__thumbnail {
+  position: relative;
+  display: grid;
+  min-width: 58px;
+  min-height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  padding: 2px;
+  border: 1px solid rgba(95, 78, 51, .3);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, .45);
+}
+
+.poem-export__thumbnail[aria-pressed="true"] {
+  border-color: #88642f;
+  box-shadow: 0 0 0 2px rgba(136, 100, 47, .3);
+}
+
+.poem-export__thumbnail-canvas {
+  display: block;
+  width: auto;
+  height: 78px;
+  max-width: 54px;
+  object-fit: contain;
+}
+
+.poem-export__thumbnail-label {
+  position: absolute;
+  right: 3px;
+  bottom: 3px;
+  min-width: 17px;
+  padding: 1px 3px;
+  border-radius: 2px;
+  background: rgba(25, 24, 21, .76);
+  color: #fff9ea;
+  font: 600 .6rem/1.25 system-ui, sans-serif;
+  text-align: center;
+}
+
+.poem-export__status {
+  width: min(100%, 560px);
+  min-height: 1.3rem;
+  flex: 0 0 auto;
+  margin: .6rem 0 .15rem;
+  color: #625641;
+  font-size: .74rem;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.poem-export__status.is-error { color: #a0332d; }
+
+.poem-export__progress {
+  width: min(100%, 560px);
+  height: 5px;
+  flex: 0 0 auto;
+  margin: .1rem 0 .55rem;
+  accent-color: #8c6a37;
+}
+
+.poem-export__actions {
+  display: flex;
+  width: min(100%, 560px);
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: .25rem;
+}
+
+.poem-export__action {
+  flex: 1 1 10rem;
+  padding: .65rem .8rem;
+  border: 1px solid #826437;
+  border-radius: 3px;
+  background: #e2d4b9;
+  color: #392e20;
+  font-size: .78rem;
+  font-weight: 600;
+}
+
+.poem-export__action--share {
+  border-color: #63502f;
+  background: #57472e;
+  color: #fff8e9;
+}
+
+.poem-export__action--share:hover:not(:disabled) { background: #6d5938; }
+.poem-export__action--download-series { background: #eee6d6; }
+.poem-export__action--download-current { flex-basis: 100%; }
+
+.poem-export button:focus-visible,
+.poem-export input:focus-visible {
+  outline: 3px solid rgba(143, 106, 49, .62);
+  outline-offset: 2px;
+}
+
+.poem-export.is-dark {
+  border-color: rgba(189, 157, 104, .42);
+  background: #25231f;
+  color: #eee7db;
+}
+
+.poem-export.is-dark .poem-export__header {
+  border-color: rgba(197, 171, 126, .18);
+  background: linear-gradient(110deg, #302d27, #25231f);
+}
+
+.poem-export.is-dark .poem-export__title { color: #f2eadb; }
+.poem-export.is-dark .poem-export__poem-meta,
+.poem-export.is-dark .poem-export__excerpt-label,
+.poem-export.is-dark .poem-export__hint { color: #c1b39a; }
+
+.poem-export.is-dark .poem-export__controls { border-color: rgba(197, 171, 126, .18); }
+
+.poem-export.is-dark .poem-export__group-title,
+.poem-export.is-dark .poem-export__range-label { color: #dbc9a7; }
+
+.poem-export.is-dark .poem-export__range-value { color: #e3c78f; }
+
+.poem-export.is-dark .poem-export__choice,
+.poem-export.is-dark .poem-export__close,
+.poem-export.is-dark .poem-export__nav-button,
+.poem-export.is-dark .poem-export__stanza-choice {
+  border-color: rgba(208, 182, 138, .3);
+  background: rgba(255, 255, 255, .055);
+  color: #eee5d5;
+}
+
+.poem-export.is-dark .poem-export__choice[aria-pressed="true"] {
+  border-color: #c3a36b;
+  background: rgba(180, 143, 82, .22);
+  color: #fff6e4;
+}
+
+.poem-export.is-dark .poem-export__background {
+  border-color: rgba(208, 182, 138, .3);
+  background: #37332b;
+  color: #eee5d5;
+}
+
+.poem-export.is-dark .poem-export__background[aria-pressed="true"] {
+  border-color: #d0ad72;
+  box-shadow: 0 0 0 2px rgba(208, 173, 114, .28);
+}
+
+.poem-export.is-dark .poem-export__stanza-text { color: #eee5d5; }
+
+.poem-export.is-dark .poem-export__preview-column {
+  border-color: rgba(197, 171, 126, .14);
+  background:
+    radial-gradient(ellipse at 50% 0, rgba(181, 149, 97, .12), transparent 48%),
+    #1d1c19;
+}
+
+.poem-export.is-dark .poem-export__frame-counter,
+.poem-export.is-dark .poem-export__status { color: #d1c3a9; }
+
+.poem-export.is-dark .poem-export__status.is-error { color: #ffaaa1; }
+
+.poem-export.is-dark .poem-export__thumbnail {
+  border-color: rgba(214, 188, 143, .3);
+  background: rgba(255, 255, 255, .04);
+}
+
+.poem-export.is-dark .poem-export__thumbnail[aria-pressed="true"] {
+  border-color: #d0ad72;
+  box-shadow: 0 0 0 2px rgba(208, 173, 114, .28);
+}
+
+.poem-export.is-dark .poem-export__action {
+  border-color: #a98753;
+  background: #40372a;
+  color: #fff4df;
+}
+
+.poem-export.is-dark .poem-export__action--share {
+  border-color: #d0ad72;
+  background: #765e37;
+}
+
+.poem-export.is-dark .poem-export__action--share:hover:not(:disabled) { background: #896e40; }
+
+.poem-export.is-dark button:focus-visible,
+.poem-export.is-dark input:focus-visible {
+  outline-color: rgba(219, 188, 129, .8);
+}
+
+@media (max-width: 760px) {
+  .poem-export {
+    width: 100vw;
+    max-height: 100dvh;
+    height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .poem-export__shell { height: 100%; max-height: 100%; }
+
+  .poem-export__header { padding: calc(.75rem + env(safe-area-inset-top)) 1rem .75rem; }
+
+  .poem-export__layout {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
+
+  .poem-export__controls {
+    order: 2;
+    flex: 0 0 auto;
+    overflow: visible;
+    padding: .85rem 1rem calc(1.15rem + env(safe-area-inset-bottom));
+    border-top: 1px solid rgba(123, 99, 63, .16);
+    border-right: 0;
+  }
+
+  .poem-export__preview-column {
+    order: 1;
+    flex: 0 0 auto;
+    min-height: 0;
+    padding: .75rem .75rem .85rem;
+    overflow: visible;
+  }
+
+  .poem-export__preview-frame { min-height: 0; flex: 0 0 auto; }
+
+  .poem-export__canvas { max-height: min(48dvh, 500px); }
+
+  .poem-export__thumbnail-canvas { height: 62px; }
+
+  .poem-export__actions { gap: .4rem; }
+
+  .poem-export__action { min-height: 46px; }
+}
+
+@media (max-width: 430px) {
+  .poem-export__header { gap: .5rem; }
+  .poem-export__close { font-size: .72rem; }
+  .poem-export__controls { padding-left: .75rem; padding-right: .75rem; }
+  .poem-export__backgrounds { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .34rem; }
+  .poem-export__background-caption { min-height: 2.4rem; padding: .25rem .22rem; font-size: .6rem; }
+  .poem-export__adjustments { grid-template-columns: 1fr; }
+  .poem-export__adjustments .poem-export__group-title { grid-column: auto; }
+  .poem-export__canvas { max-height: min(44dvh, 410px); }
+  .poem-export__nav-button { min-width: 4.9rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poem-export[open],
+  .page-poems .poem-share-trigger { animation: none; transition: none; }
+}

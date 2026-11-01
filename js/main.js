@@ -178,7 +178,7 @@
       return best;
     };
 
-    const scorePoem = (query, { title, meta, body }) => {
+    const scorePoem = (query, { title, meta, body, aliases = [] }) => {
       const q = normalize(query);
       if (!q) return 1;
       let best = 0;
@@ -187,6 +187,15 @@
       const bodyN = normalize(body);
       if (titleN === q) best = Math.max(best, 500);
       else if (titleN.includes(q)) best = Math.max(best, 300);
+      aliases.forEach((alias) => {
+        const aliasN = normalize(alias);
+        if (aliasN === q) best = Math.max(best, 450);
+        else if (aliasN.includes(q)) best = Math.max(best, 280);
+        if (q.length >= 2) {
+          const dAlias = bestDice(q, alias);
+          if (dAlias >= 0.45) best = Math.max(best, dAlias * 27);
+        }
+      });
       if (metaN.includes(q)) best = Math.max(best, 200);
       if (bodyN.includes(q)) best = Math.max(best, 100);
       if (q.length >= 2) {
@@ -329,7 +338,8 @@
       const body = (poem.querySelector('.poem-body')?.textContent || '').trim();
       const bodyIndex = normalizeWithOffsets(body);
       const link = tocLinks.find(a => a.dataset.poemId === poem.id);
-      return { poem, link, title, meta, body, bodyIndex, language: poem.dataset.language, li: link?.parentElement };
+      const aliases = (poem.dataset.searchAliases || '').split('|').map(value => value.trim()).filter(Boolean);
+      return { poem, link, title, meta, body, bodyIndex, aliases, language: poem.dataset.language, li: link?.parentElement };
     });
 
     const setActive = (id) => {
