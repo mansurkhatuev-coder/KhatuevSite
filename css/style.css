@@ -1428,6 +1428,7 @@ body::before {
   .selected-poems__grid { grid-template-columns: 1fr; gap: 0; }
   .selected-poems__heading { display: block; margin-bottom: 1.5rem; }
   .selected-poems__all { display: inline-block; margin-top: 1rem; }
+  .selected-poem { padding-inline: 1.25rem; }
   .selected-poem p { margin-bottom: 1.25rem; }
   .page-contacts .page-hero { min-height: 210px; padding-bottom: 1.5rem; }
 }
