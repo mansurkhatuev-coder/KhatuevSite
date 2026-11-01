@@ -5,12 +5,44 @@
 (function () {
   'use strict';
 
+  /* Keep iOS 26 Safari's translucent status area from sampling the scrolling page. */
+  const userAgent = navigator.userAgent;
+  const isIOSDevice = /iPhone|iPad|iPod/.test(userAgent)
+    || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const iosVersionMatch = userAgent.match(/(?:CPU (?:iPhone )?OS|iPhone OS) (\d+)[_.]/);
+  const iosMajorVersion = iosVersionMatch
+    ? Number(iosVersionMatch[1])
+    : (isIOSDevice ? Number(userAgent.match(/Version\/(\d+)/)?.[1]) : 0);
+  const isStandalone = navigator.standalone === true
+    || window.matchMedia('(display-mode: standalone)').matches;
+  let pageScroller = null;
+
+  if (isIOSDevice && iosMajorVersion === 26 && !isStandalone) {
+    pageScroller = document.createElement('div');
+    pageScroller.className = 'ios26-page-scroll';
+
+    const fixedElements = new Set([
+      document.querySelector('.nav'),
+      document.querySelector('.nav__drawer'),
+    ].filter(Boolean));
+
+    Array.from(document.body.children).forEach((child) => {
+      if (!fixedElements.has(child) && child.tagName !== 'SCRIPT') {
+        pageScroller.appendChild(child);
+      }
+    });
+
+    document.documentElement.classList.add('ios26-safari-scroll-locked');
+    document.body.appendChild(pageScroller);
+  }
+
   /* ── Navigation scroll behavior ── */
   const nav = document.querySelector('.nav');
   let lastScroll = 0;
 
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
+  const scrollTarget = pageScroller || window;
+  scrollTarget.addEventListener('scroll', () => {
+    const current = pageScroller ? pageScroller.scrollTop : window.scrollY;
     if (nav) nav.classList.toggle('scrolled', current > 60);
     lastScroll = current;
   }, { passive: true });
@@ -28,6 +60,7 @@
     drawer.setAttribute('aria-hidden', String(!open));
     drawer.inert = !open;
     document.body.style.overflow = open ? 'hidden' : '';
+    if (pageScroller) pageScroller.style.overflowY = open ? 'hidden' : 'auto';
     if (open) drawerLinks[0]?.focus({ preventScroll: true });
     else if (returnFocus) hamburger.focus({ preventScroll: true });
   };
