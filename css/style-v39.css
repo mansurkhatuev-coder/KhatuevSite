@@ -1631,7 +1631,7 @@ body.has-voice-player { padding-bottom: 6.5rem; }
     --ornament-opacity: .78;
     top: calc(var(--nav-total-h) + 1.5rem);
     left: .25rem;
-    width: clamp(1rem, 5vw, 1.2rem);
+    width: clamp(1.5rem, 7vw, 2rem);
     transform: scaleY(1.16);
     transform-origin: top center;
   }
