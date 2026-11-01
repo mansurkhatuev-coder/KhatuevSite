@@ -475,6 +475,11 @@
   /* ── Shared player for the author's recordings ── */
   const voiceButtons = [...document.querySelectorAll('[data-voice-play]')];
   if (voiceButtons.length) {
+    const playerStylesheet = document.createElement('link');
+    playerStylesheet.rel = 'stylesheet';
+    playerStylesheet.href = new URL('css/voice-player.css?v=1', document.baseURI).href;
+    document.head.appendChild(playerStylesheet);
+
     const player = document.createElement('aside');
     player.className = 'voice-player';
     player.hidden = true;
@@ -486,20 +491,93 @@
         <strong class="voice-player__title"></strong>
         <span class="voice-player__status" aria-live="polite">Выберите запись</span>
       </div>
-      <audio controls preload="none" aria-label="Управление воспроизведением"></audio>
-      <button class="voice-player__close" type="button" aria-label="Закрыть проигрыватель"><span aria-hidden="true">×</span></button>
+      <div class="voice-player__controls">
+        <button class="voice-player__toggle" type="button" aria-label="Продолжить воспроизведение" aria-pressed="false" title="Продолжить воспроизведение">
+          <svg class="voice-player__toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="voice-player__timeline">
+          <span class="voice-player__time voice-player__time--current">0:00</span>
+          <input class="voice-player__seek" type="range" min="0" max="0" step="0.1" value="0" aria-label="Позиция воспроизведения" aria-valuetext="Длительность неизвестна" disabled>
+          <span class="voice-player__time voice-player__time--duration">--:--</span>
+        </div>
+        <div class="voice-player__volume">
+          <button class="voice-player__volume-toggle" type="button" aria-label="Выключить звук" aria-pressed="false" title="Выключить звук">
+            <svg class="voice-player__volume-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 10v4h4l5 4V6l-5 4H4z"/>
+              <path class="voice-player__volume-wave" d="M16 9a5 5 0 0 1 0 6"/>
+              <path class="voice-player__volume-wave" d="M18.5 6.5a9 9 0 0 1 0 11"/>
+              <path class="voice-player__volume-off" d="m17 9 5 6m0-6-5 6"/>
+            </svg>
+          </button>
+          <input class="voice-player__volume-control" type="range" min="0" max="1" step="0.05" value="1" aria-label="Громкость" aria-valuetext="100 процентов">
+        </div>
+      </div>
+      <button class="voice-player__close" type="button" aria-label="Закрыть проигрыватель" title="Закрыть проигрыватель">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m7 7 10 10M17 7 7 17"/></svg>
+      </button>
+      <audio class="voice-player__audio" preload="none" aria-hidden="true"></audio>
     `;
     document.body.appendChild(player);
 
     const audio = player.querySelector('audio');
     const playerTitle = player.querySelector('.voice-player__title');
     const playerStatus = player.querySelector('.voice-player__status');
+    const toggleButton = player.querySelector('.voice-player__toggle');
+    const toggleShape = player.querySelector('.voice-player__toggle-icon path');
+    const seekControl = player.querySelector('.voice-player__seek');
+    const currentTimeLabel = player.querySelector('.voice-player__time--current');
+    const durationLabel = player.querySelector('.voice-player__time--duration');
+    const volumeButton = player.querySelector('.voice-player__volume-toggle');
+    const volumeControl = player.querySelector('.voice-player__volume-control');
     const closeButton = player.querySelector('.voice-player__close');
     let activeSource = '';
     let lastTrigger = null;
+    let previousVolume = 1;
 
     const getButtonTitle = (button) => button.dataset.audioTitle || 'Аудиозапись';
     const getButtonSource = (button) => new URL(button.dataset.audioSrc, document.baseURI).href;
+    const formatTime = (seconds) => {
+      const total = Math.max(0, Math.floor(Number.isFinite(seconds) ? seconds : 0));
+      const minutes = Math.floor(total / 60);
+      const remainder = String(total % 60).padStart(2, '0');
+      return `${minutes}:${remainder}`;
+    };
+    const updatePlayerControls = () => {
+      const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+      const currentTime = Number.isFinite(audio.currentTime) ? audio.currentTime : 0;
+      const boundedTime = duration > 0 ? Math.min(currentTime, duration) : currentTime;
+      currentTimeLabel.textContent = formatTime(boundedTime);
+      durationLabel.textContent = duration > 0 ? formatTime(duration) : '--:--';
+      seekControl.max = String(duration);
+      seekControl.value = String(duration > 0 ? boundedTime : 0);
+      seekControl.disabled = duration <= 0;
+      const progress = duration > 0 ? (boundedTime / duration) * 100 : 0;
+      seekControl.style.setProperty('--progress', `${progress}%`);
+      seekControl.setAttribute('aria-valuetext', duration > 0
+        ? `${formatTime(boundedTime)} из ${formatTime(duration)}`
+        : 'Длительность неизвестна');
+
+      const playing = !audio.paused && !audio.ended;
+      const label = playing
+        ? 'Приостановить воспроизведение'
+        : audio.ended ? 'Прослушать снова' : 'Продолжить воспроизведение';
+      toggleButton.setAttribute('aria-label', label);
+      toggleButton.setAttribute('aria-pressed', String(playing));
+      toggleButton.title = label;
+      toggleShape.setAttribute('d', playing
+        ? 'M7 5h3v14H7zM14 5h3v14h-3z'
+        : 'M8 5v14l11-7z');
+
+      const volume = audio.muted ? 0 : audio.volume;
+      const muted = volume <= 0;
+      volumeControl.value = String(volume);
+      volumeControl.style.setProperty('--volume', `${volume * 100}%`);
+      volumeControl.setAttribute('aria-valuetext', `${Math.round(volume * 100)} процентов`);
+      volumeButton.setAttribute('aria-label', muted ? 'Включить звук' : 'Выключить звук');
+      volumeButton.setAttribute('aria-pressed', String(muted));
+      volumeButton.title = muted ? 'Включить звук' : 'Выключить звук';
+      player.classList.toggle('is-muted', muted);
+    };
     const syncVoiceButtons = () => {
       voiceButtons.forEach((button) => {
         const selected = getButtonSource(button) === activeSource;
@@ -516,6 +594,7 @@
         button.setAttribute('aria-pressed', String(playing));
         button.setAttribute('aria-label', `${playing ? 'Приостановить' : selected ? 'Продолжить' : 'Слушать'} «${getButtonTitle(button)}»`);
       });
+      updatePlayerControls();
     };
 
     const showPlayer = () => {
@@ -550,6 +629,44 @@
         });
       });
     });
+
+    toggleButton.addEventListener('click', () => {
+      if (!activeSource) return;
+      if (!audio.paused && !audio.ended) {
+        audio.pause();
+        return;
+      }
+      if (audio.ended) audio.currentTime = 0;
+      audio.play().catch(() => {
+        playerStatus.textContent = 'Не удалось открыть запись';
+        syncVoiceButtons();
+      });
+    });
+    seekControl.addEventListener('input', () => {
+      if (Number.isFinite(audio.duration)) audio.currentTime = Number(seekControl.value);
+      updatePlayerControls();
+    });
+    volumeButton.addEventListener('click', () => {
+      if (audio.muted || audio.volume === 0) {
+        audio.muted = false;
+        audio.volume = previousVolume || 1;
+      } else {
+        previousVolume = audio.volume;
+        audio.muted = true;
+      }
+      updatePlayerControls();
+    });
+    volumeControl.addEventListener('input', () => {
+      const volume = Number(volumeControl.value);
+      audio.volume = volume;
+      audio.muted = volume === 0;
+      if (volume > 0) previousVolume = volume;
+      updatePlayerControls();
+    });
+    audio.addEventListener('loadedmetadata', updatePlayerControls);
+    audio.addEventListener('durationchange', updatePlayerControls);
+    audio.addEventListener('timeupdate', updatePlayerControls);
+    audio.addEventListener('volumechange', updatePlayerControls);
 
     audio.addEventListener('play', () => {
       playerStatus.textContent = 'Сейчас звучит';
