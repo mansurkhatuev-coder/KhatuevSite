@@ -1589,11 +1589,15 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   animation: chechen-ornament-arrive 1.2s var(--ease) .25s both;
 }
 .page-hero__content { z-index: 1; }
+.hero__poem {
+  position: relative;
+  width: min(440px, 100%);
+}
 .hero-ornament {
   --ornament-opacity: .82;
   top: 50%;
   bottom: auto;
-  left: clamp(1rem, 2.5vw, 2.5rem);
+  left: calc(clamp(1rem, 2.5vw, 2.5rem) - clamp(7.5rem, 7.5vw, 9rem));
   width: clamp(1.7rem, 2.8vw, 2.3rem);
   height: auto;
   object-fit: contain;
@@ -1608,7 +1612,7 @@ body.has-voice-player { padding-bottom: 6.5rem; }
 }
 @media (min-width: 641px) and (max-width: 900px) {
   .hero-ornament {
-    left: clamp(.75rem, 2vw, 1.25rem);
+    left: calc(clamp(.75rem, 2vw, 1.25rem) - clamp(5.25rem, 12vw, 7.5rem));
     width: clamp(1.4rem, 3vw, 1.8rem);
   }
   .hero__content {
@@ -1629,11 +1633,11 @@ body.has-voice-player { padding-bottom: 6.5rem; }
   .hero-ornament {
     display: block;
     --ornament-opacity: .78;
-    top: calc(var(--nav-total-h) + 1.5rem);
-    left: .25rem;
+    top: 50%;
+    left: calc(.25rem - clamp(7.5rem, 7.5vw, 9rem));
     width: clamp(1.5rem, 7vw, 2rem);
-    transform: scaleY(1.16);
-    transform-origin: top center;
+    transform: translateY(-50%) scaleY(1.16);
+    transform-origin: center;
   }
   .page-hero::after { right: -2.75rem; width: 12rem; --ornament-opacity: .11; }
 }
