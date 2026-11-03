@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "khatuev-pwa-";
-const CACHE_VERSION = "v18";
+const CACHE_VERSION = "v19";
 const SHELL_CACHE = `${CACHE_PREFIX}shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `${CACHE_PREFIX}assets-${CACHE_VERSION}`;
 const SCOPE_URL = new URL(self.registration.scope);
@@ -18,7 +18,7 @@ const CORE_ASSETS = [
   "css/poems-reading.css?v=1",
   "css/poem-export.css?v=1",
   "css/voice-player.css?v=1",
-  "js/main.js?v=23",
+  "js/main.js?v=24",
   "js/pwa.js?v=1",
   "js/book-reader.js?v=3",
   "js/poem-export.js?v=1",
