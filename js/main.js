@@ -345,6 +345,12 @@
 
       const header = poem.querySelector('.poem-block__header');
       if (header) {
+        const permalink = document.createElement('a');
+        permalink.className = 'poem-permalink';
+        permalink.href = `#${id}`;
+        permalink.textContent = 'Ссылка на стихотворение';
+        header.appendChild(permalink);
+
         const themeButton = document.createElement('button');
         themeButton.type = 'button';
         themeButton.className = 'poem-theme-toggle';
